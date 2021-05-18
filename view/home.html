@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="home.css" />
+</head>
+<body>
+
+<div class="header">
+  <h1>House For Rent</h1>
+  <p>Resize the browser window to see the effect.</p>
+</div>
+
+<div class="topnav">
+  <a href="#">Link</a>
+  <a href="#">Link</a>
+  <a href="#">Link</a>
+  <a href="#" style="float:right">Đăng nhập</a>
+</div>
+
+<div class="row_main">
+  <div class="leftcolumn">
+    <div class="search-content">
+        <label class="slogan">Tìm trọ thật đơn giản</label>
+        <div id="formSearch" class="rounded form-content">
+          <div class="display-flex">
+            <!-- chọn khu vực -->
+            <div class="choose-area pl-4 wow bounceInLeft" data-wow-duration="1s">
+              <label>Chọn khu vực</label>
+              <!-- chọn thành phố -->
+              <select class="form-control " name="city" id="city">
+                <!-- <option value="Thành phố" hidden>Thành phố</option>
+                <option value="Hà Nội">Hà Nội</option>
+                <option value="HCM">HCM</option> -->
+              </select>
+              <!-- chọn quận huyện -->
+              <select class="form-control" name="district" id="district">
+                <option value="Quận(Huyện)" hidden>Quận/Huyện</option>
+                <!-- <option value="Quất Lâm">Quất Lâm</option>
+                <option value="Trần Duy Hưng">Trần Duy Hưng</option> -->
+              </select>
+            </div>
+
+            <!-- chọn loại phòng -->
+            <div class="choose-room wow bounceInDown" data-wow-duration="1s">
+              <label class="label-choose-room">Chọn loại phòng</label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="type_room"
+                  id="phong_tro"
+                  value="Phòng trọ"
+                />
+                <label class="form-check-label" for="phong_tro">
+                  Phòng trọ
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="type_room"
+                  id="chung_cu_mini"
+                  value="Chung cư mini"
+                />
+                <label class="form-check-label" for="chung_cu_mini">
+                  Chung cư mini
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="type_room"
+                  id="nha_nguyen_can"
+                  value="Nhà nguyên căn"
+                />
+                <label class="form-check-label" for="nha_nguyen_can">
+                  Nhà nguyên căn
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="type_room"
+                  id="chung_cu_nguyen_can"
+                  value="Chung cư nguyên căn"
+                />
+                <label class="form-check-label" for="chung_cu_nguyen_can">
+                  Chung cư nguyên căn
+                </label>
+              </div>
+            </div>
+
+            <!-- chọn khoảng giá -->
+            <div class="choose-prices " data-wow-duration="1s">
+              <label>Chọn khoảng giá</label><br />
+
+              <div class="select-div">
+                <!-- giá thấp nhất -->
+                <div class="d-flex select-minPrices">
+                  <label for="minPrices">Giá thấp nhất</label>
+                  <select class="form-control" name="minPrices" id="minPrices">
+                    <option value="Tất cả">Tất cả</option>
+                    <option value="1">1 triệu</option>
+                    <option value="3">3 triệu</option>
+                    <option value="5">5 triệu</option>
+                    <option value="7">7 triệu</option>
+                    <option value="10">10 triệu</option>
+                    <option value="20">20 triệu</option>
+                  </select>
+                </div>
+
+                <!-- giá cao nhất -->
+                <div class="d-flex mt-3 select-maxPrices">
+                  <label for="maxPrices">Giá cao nhất</label>
+                  <select class="form-control" name="maxPrices" id="maxPrices">
+                    <option value="Tất cả">Tất cả</option>
+                    <option value="1">1 triệu</option>
+                    <option value="3">3 triệu</option>
+                    <option value="5">5 triệu</option>
+                    <option value="7">7 triệu</option>
+                    <option value="10">10 triệu</option>
+                    <option value="20">20 triệu</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="div-submit mt-3 wow bounceInUp" data-wow-duration="1s">
+            <button
+              id="submit"
+              name="search"
+              class="btn "
+              value="Tìm kiếm"
+              type="button"
+            >
+              Tìm kiếm
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="wrapper-fav">
+        <label class="label-fav">Danh sách bài đăng được yêu thích nhất</label>
+        <div class="container">
+          <div class="row">
+            <div class="column">
+              <!-- ảnh -->
+              <div class="img-div">
+                <a class="link-img" href="#">
+                  <img
+                    class="img-post"
+                    src="download.jpg"
+                    alt="hình ảnh căn phòng cho thuê ở số 69, ngõ 157, chùa láng, Đống Đa, Hà Nội"
+                  />
+                </a>
+              </div>
+              <!-- tóm tắt -->
+              <div class="brief-div">
+                <div class="idPost">5</div>
+                <a class="titlePost" href="#">
+                  Căn phòng cho thuê ở số 69, ngõ 157, chùa láng, Đống Đa, Hà
+                  Nội
+                </a>
+                <div class="d-flex address-div">
+                  <div class="mr-1 address-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="addressPost">
+                    số 69, ngõ 157, chùa láng, Đống Đa, Hà Nội
+                  </div>
+                </div>
+    
+                <div class="d-flex Prices-div">
+                  <div class="mt-1 mr-1 Prices-icon">
+                    <i class="fas fa-coins"></i>
+                  </div>
+                  <div class="Prices">3 triệu 800 nghìn</div>
+                </div>
+    
+                <div class="datePost">Ngày đăng: 22/11/2020</div>
+    
+                <div class="favorite">
+                  <i class="far fa-heart"></i>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              
+              <div class="img-div">
+                <a class="link-img" href="#">
+                  <img
+                    class="img-post"
+                    src="download.jpg"
+                    alt="hình ảnh căn phòng cho thuê ở số 69, ngõ 157, chùa láng, Đống Đa, Hà Nội"
+                  />
+                </a>
+              </div>
+    
+              <div class="brief-div">
+                <div class="idPost">6</div>
+                <a class="titlePost" href="#">
+                  Căn phòng cho thuê ở số 69, ngõ 157, chùa láng, Đống Đa, Hà
+                  Nội, hahahahahahaha
+                </a>
+                <div class="d-flex address-div">
+                  <div class="mr-1 address-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="addressPost">
+                    số 69, ngõ 157, chùa láng, Đống Đa, Hà Nội
+                  </div>
+                </div>
+    
+                <div class="d-flex Prices-div">
+                  <div class="mt-1 mr-1 Prices-icon">
+                    <i class="fas fa-coins"></i>
+                  </div>
+                  <div class="Prices">3 triệu 800 nghìn</div>
+                </div>
+    
+                <div class="datePost">Ngày đăng: 22/11/2020</div>
+    
+                <div class="favorite">
+                  <i class="far fa-heart"></i>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+             
+              <div class="img-div">
+                <a class="link-img" href="#">
+                  <img
+                    class="img-post"
+                    src="download.jpg"
+                    alt="hình ảnh căn phòng cho thuê ở số 69, ngõ 157, chùa láng, Đống Đa, Hà Nội"
+                  />
+                </a>
+              </div>
+              
+              <div class="brief-div">
+                <div class="idPost">7</div>
+                <a class="titlePost" href="#">
+                  69, ngõ 157, chùa láng, Đống Đa, Hà Nội
+                </a>
+                <div class="d-flex address-div">
+                  <div class="mr-1 address-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="addressPost">
+                    số 69, ngõ 157, chùa láng, Đống Đa, Hà Nội
+                  </div>
+                </div>
+    
+                <div class="d-flex Prices-div">
+                  <div class="mt-1 mr-1 Prices-icon">
+                    <i class="fas fa-coins"></i>
+                  </div>
+                  <div class="Prices">3 triệu 800 nghìn</div>
+                </div>
+    
+                <div class="datePost">Ngày đăng: 22/11/2020</div>
+    
+                <div class="favorite">
+                  <i class="far fa-heart"></i>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              
+              
+              <div class="img-div">
+                <a class="link-img" href="#">
+                  <img
+                    class="img-post"
+                    src="download.jpg"
+                    alt="hình ảnh căn phòng cho thuê ở số 69, ngõ 157, chùa láng, Đống Đa, Hà Nội"
+                  />
+                </a>
+              </div>
+              
+              
+              <div class="brief-div">
+                <div class="idPost">8</div>
+                <a class="titlePost" href="#">
+                  số 69, ngõ 157, chùa láng, Đống Đa, Hà Nội
+                </a>
+                <div class="d-flex address-div">
+                  <div class="mr-1 address-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="addressPost">
+                    số 69, ngõ 157, chùa láng, Đống Đa, Hà Nội
+                  </div>
+                </div>
+    
+                <div class="d-flex Prices-div">
+                  <div class="mt-1 mr-1 Prices-icon">
+                    <i class="fas fa-coins"></i>
+                  </div>
+                  <div class="Prices">3 triệu 800 nghìn</div>
+                </div>
+    
+                <div class="datePost">Ngày đăng: 22/11/2020</div>
+    
+                <div class="favorite">
+                  <i class="far fa-heart"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <!-- <div class="card">
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Dec 7, 2017</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    </div>
+    <div class="card">
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Sep 2, 2017</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    </div> -->
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <h2>About Me</h2>
+      <div class="fakeimg" style="height:100px;">Image</div>
+      <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+    </div>
+    <div class="card">
+      <h3>Popular Post</h3>
+      <div class="fakeimg"><p>Image</p></div>
+      <div class="fakeimg"><p>Image</p></div>
+      <div class="fakeimg"><p>Image</p></div>
+    </div>
+    
+  </div>
+</div>
+
+
+
+<div class="footer">
+    <div class="container-fluid footer">
+        <div class="container">
+          <div class="row-footer">
+            <div class="column-footer">
+              <h5><u>HỖ TRỢ TRỰC TUYẾN</u></h5>
+              <p>
+                Chuyên viên tư vấn 1<br />
+                <i class="fas fa-phone"></i>&nbsp0969666999
+              </p>
+              <p>
+                Chuyên viên tư vấn 2<br />
+                <i class="fas fa-phone"></i>&nbsp0969999666
+              </p>
+            </div>
+            <div class="column-footer">
+              <h5><u>ĐIỀU KHOẢN SỬ DỤNG</u></h5>
+              <p>Điều khoản chung</p>
+              <p>Điều khoản giao dịch</p>
+              <p>Chính sách thanh toán</p>
+              <p>Chính sách bảo mật</p>
+            </div>
+            <div class="column-footer">
+              <h5><u>HOTLINE LIÊN HỆ</u></h5>
+              <p id="hotline"><i class="fas fa-phone"></i>&nbsp0969696969</p>
+              <p>(hỗ trợ tất cả các ngày trong tuần)</p>
+            </div>
+            <div class="column-footer">
+              <h5><u>HỆ THỐNG CÔNG TY</u></h5>
+              <p>Công ty cổ phần TNHH BDTV</p>
+              <p>Địa chỉ: Đại học Bách Khoa Hà Nội</p>
+              <p>Email: bdtv@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+</body>
+</html>
