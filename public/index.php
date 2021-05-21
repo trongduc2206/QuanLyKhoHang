@@ -1,0 +1,29 @@
+<?php
+require_once '../core/Application.php';
+require_once '../controllers/SiteController.php';
+require_once '../controllers/AuthController.php';
+
+$config = [
+    'db' => [
+        'dsn' => 'mysql:host=localhost;port=3306;dbname=cnweb_btl',
+        'user' => 'root',
+        'password' => 'trongduc22062000'    
+    ]
+];
+
+$app = new Application($config);
+
+$app->router->get('/', array(new SiteController(), 'home'));
+
+$app->router->get('/contact', 'contact');
+
+$app->router->post('/', array(new SiteController(), 'handleHome') );
+
+$app->router->get('/login', [AuthController::class, 'login']);
+$app->router->post('/login',[AuthController::class, 'login']);
+$app->router->get('/register', [AuthController::class, 'register']);
+$app->router->post('/register', [AuthController::class, 'register']);
+
+$app->run();
+
+?>

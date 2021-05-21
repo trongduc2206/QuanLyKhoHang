@@ -119,53 +119,17 @@ body {
   <p>Resize the browser window to see the effect.</p>
 </div>
 
-<div class="topnav">
-  <a href="#">Link</a>
-  <a href="#">Link</a>
-  <a href="#">Link</a>
-  <a href="#" style="float:right">Link</a>
+ 
+
 </div>
 
 <div class="row">
   <div class="leftcolumn">
-
-    <div class="table">
-        <h2>Stock Result </h2>
-        <table border="1">
-        <tbody><tr><td>Code</td><td>Name</td></tr></tbody>
-        <?php
-          foreach($stock as $code=>$stock){
-            echo '<tr><td>'.$stock->code.'</td><td>'.$stock->name.'</td>';
-          }
-        ?>
-        </table>
-        <?php $referer = filter_var($_SERVER['HTTP_REFERER'], FILTER_VALIDATE_URL);
-	
-	if (!empty($referer)) {
-		
-		echo '<p><a href="'. $referer .'" title="Return to the previous page">&laquo; Go back</a></p>';
-		
-	} else {
-		
-		echo '<p><a href="javascript:history.go(-1)" title="Return to the previous page">&laquo; Go back</a></p>';
-		
-	}
-?>
-    </div>  
-    <div class="card">
-      <h2>TITLE HEADING</h2>
-      <h5>Title description, Dec 7, 2017</h5>
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    <div class="container">
+    {{content}}
     </div>
-    <div class="card">
-      <h2>TITLE HEADING</h2>
-      <h5>Title description, Sep 2, 2017</h5>
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-    </div>
+    
+    
   </div>
   <div class="rightcolumn">
     <div class="card">
