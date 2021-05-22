@@ -1,7 +1,9 @@
 <?php
 require_once '../core/Model.php';
 require_once '../core/DbModel.php';
-class User extends DbModel{
+require_once '../core/UserModel.php';
+
+class User extends UserModel{
     public string $username = '';
     public string $password= '';
     public string $confirmPassword = '';
@@ -10,6 +12,11 @@ class User extends DbModel{
     public function tableName(): string
     {
         return 'merchant';
+    }
+
+    public function primaryKey(): string
+    {
+        return 'id';
     }
 
     public function save(){
@@ -33,6 +40,20 @@ class User extends DbModel{
     public function attributes(): array
     {
         return ['username','password', 'name'];
+    }
+
+    public function labels():array{
+        return [
+            'username' => 'User Name',
+            'password' => 'Password',
+            'name' => 'Name',
+            'confirmPassword' => 'Confirm Password'
+        ];
+    }
+
+    public function getDisplayName(): string
+    {
+        return $this->name;
     }
 }
 ?>

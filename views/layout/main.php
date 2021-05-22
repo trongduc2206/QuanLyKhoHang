@@ -1,3 +1,7 @@
+<?php
+// var_dump(Application::$app->user);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -121,11 +125,19 @@ body {
 
 <div class="topnav">
   <a href="/">Home</a>
-  <a href="/contact">Contact</a>
-  <a href="#">Link</a>
+  <?php if(!Application::isGuest()): ?>
+  <a href="/import">Import</a>
+  <a href="/export">Export</a>
+  <?php  endif; ?>
+  <?php if(Application::isGuest()): ?>
   <a href="/login" style="float:right">Login</a>
   <a href="/register" style="float:right">Register</a>
+    <?php else: ?>
 
+      <a href="/logout" style="float:right">Welcome <?php echo Application::$app->user->getDisplayName() ?>
+      (logout)
+      </a>
+    <?php  endif; ?>
 </div>
 
 <?php

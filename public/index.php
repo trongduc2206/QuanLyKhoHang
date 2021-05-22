@@ -2,8 +2,12 @@
 require_once '../core/Application.php';
 require_once '../controllers/SiteController.php';
 require_once '../controllers/AuthController.php';
+require_once '../controllers/DataController.php';
+
+require_once '../models/User.php';
 
 $config = [
+    'userClass' => User::class,
     'db' => [
         'dsn' => 'mysql:host=localhost;port=3306;dbname=cnweb_btl',
         'user' => 'root',
@@ -13,9 +17,11 @@ $config = [
 
 $app = new Application($config);
 
-$app->router->get('/', array(new SiteController(), 'home'));
+$app->router->get('/', [SiteController::class, 'home']);
 
-$app->router->get('/contact', 'contact');
+$app->router->get('/import', [DataController::class,'getImportGood']);
+$app->router->get('/export', 'contact');
+
 
 $app->router->post('/', array(new SiteController(), 'handleHome') );
 
@@ -23,6 +29,9 @@ $app->router->get('/login', [AuthController::class, 'login']);
 $app->router->post('/login',[AuthController::class, 'login']);
 $app->router->get('/register', [AuthController::class, 'register']);
 $app->router->post('/register', [AuthController::class, 'register']);
+
+$app->router->get('/logout', [AuthController::class, 'logout']);
+
 
 $app->run();
 

@@ -1,12 +1,24 @@
 <?php
 require_once '../core/Controller.php';
 require_once '../core/Request.php';
+require_once '../core/Response.php';
 require_once '../models/User.php';
+require_once '../models/LoginForm.php';
 class AuthController extends Controller{
-    public function login(){
+    public function login(Request $request, Response $response){
+        $loginForm = new LoginForm();
+        if($request->isPost()){
+            $loginForm->loadData($request->getBody());
+            if($loginForm->validate()&& $loginForm->login()){
+                $response->redirect('/');
+                return ;
+            }
+        }
         $this->setLayout('auth');
         // var_dump($this->layout);
-        return $this -> render('login');
+        return $this -> render('login',[
+            'model' => $loginForm
+        ]);
     }
 
     public function register(Request $request){
@@ -30,6 +42,11 @@ class AuthController extends Controller{
         return $this -> render('register',[
             'model' => $registerModel
         ]);
+    }
+
+    public function logout(Request $request, Response $response){
+        Application::$app->logout();
+        $response -> redirect('/');
     }
 }
 ?>
