@@ -43,7 +43,7 @@ abstract class DbModel extends Model{
 
     }
 
-    public function findMany($what,$where){
+    public function findMany($where){
         $tableName = $this->tableName();
         $attributes = array_keys($where);
        $sql = implode("AND",array_map(fn($attr) => "$attr = :$attr", $attributes));
@@ -60,6 +60,38 @@ abstract class DbModel extends Model{
         $statement->execute();
         return $statement->fetchAll();
     }
+
+    public function deleteById($id){
+        $tableName = $this->tableName();
+        $sql = "DELETE FROM $tableName WHERE id = $id";
+        $statement = self::prepare($sql);
+        $statement->execute();
+        return true;
+    }
+
+    public function getTotalNumber($primaryKey){
+        $tableName = $this->tableName();
+        $sql = "SELECT COUNT($primaryKey) AS COUNT FROM $tableName";
+        // var_dump($sql);
+        $statement = self::prepare($sql);
+        $statement->execute();
+        return $statement->fetchAll(); 
+    }
+
+    public function getTotalNumberWhere($primaryKey, $where){
+        $tableName = $this->tableName();
+        $attributes = array_keys($where);
+       $sql = implode("AND",array_map(fn($attr) => "$attr = :$attr", $attributes));
+       $statement = self::prepare("SELECT COUNT($primaryKey) AS COUNT FROM $tableName WHERE $sql");
+       foreach($where as $key => $item){
+            $statement->bindValue(":$key", $item);
+       }
+       $statement->execute();
+       return $statement->fetchAll();
+    }
+
+
+
 
     public static function prepare($sql){
         return  Application::$app->db->pdo->prepare($sql);

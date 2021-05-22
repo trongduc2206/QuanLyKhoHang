@@ -20,7 +20,11 @@ $app = new Application($config);
 $app->router->get('/', [SiteController::class, 'home']);
 
 $app->router->get('/import', [DataController::class,'getImportGood']);
-$app->router->get('/export', 'contact');
+$app->router->post('/import', [DataController::class,'getImportGood']);
+$app->router->put('/import', [DataController::class,'getImportGood']);
+
+
+$app->router->get('/export',  [DataController::class,'getExportGood']);
 
 
 $app->router->post('/', array(new SiteController(), 'handleHome') );

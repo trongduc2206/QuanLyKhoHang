@@ -5,6 +5,11 @@
       <input type="submit" value="submit">
       </form>
 </div> -->
+<div class='table'>
+  <?php echo "<h2>Total Number Of Your Good: ".$numOfGood[0]['COUNT']."</h2>" ?>
+  <?php echo "<h2>Number Of Your Import Good: ".$numOfImport[0]['COUNT']."</h2>" ?>
+
+</div>
 <div class="table">
         <h2>Stock Data</h2>
         <table border="1">

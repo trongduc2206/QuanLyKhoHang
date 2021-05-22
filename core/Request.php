@@ -21,6 +21,14 @@ class Request {
         return $this->getMethod() === 'post';
     }
 
+    public function isPut(){
+        return $this->getMethod() === 'put';
+    }
+
+    public function isDelete(){
+        return $this->getMethod() === 'delete';
+    }
+
     public function getBody(){
         $body =[];
         if($this-> getMethod()==='get'){

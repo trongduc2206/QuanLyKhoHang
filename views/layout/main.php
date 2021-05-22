@@ -128,6 +128,9 @@ body {
   <?php if(!Application::isGuest()): ?>
   <a href="/import">Import</a>
   <a href="/export">Export</a>
+  <a href="/partner">Partner</a>
+  <a href="/search">Search</a>
+  <a href="/delete">Delete</a>
   <?php  endif; ?>
   <?php if(Application::isGuest()): ?>
   <a href="/login" style="float:right">Login</a>
