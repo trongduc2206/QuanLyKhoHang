@@ -4,7 +4,10 @@ require_once '../core/Request.php';
 require_once '../models/Good.php';
     class SiteController extends Controller {
         public function home(){
-            $good = new Good();
+            if(Application::$app->isGuest()){
+                return $this->render('greeting');
+            } else {
+                $good = new Good();
             $data = $good->showListGood();
             $numOfGood = $good ->getGoodNumber();
             $numOfImport = $good ->getImportGoodNum();
@@ -18,9 +21,6 @@ require_once '../models/Good.php';
                 'numOfExport' => $numOfExport,
                 'numOfPartner' => $numOfPartner
             ]; 
-            if(Application::$app->isGuest()){
-                return $this->render('greeting');
-            } else {
             return $this->render('home', $params);
             }
         }
