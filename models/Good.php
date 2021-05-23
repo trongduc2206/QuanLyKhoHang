@@ -56,5 +56,9 @@ class Good extends DbModel{
         return $this->getTotalNumberWhere($this->primaryKey(), ['status'=>'Đã nhập']);
     }
 
+    public function getExportGoodNum(){
+        return $this->getTotalNumberWhere($this->primaryKey(), ['status'=>'Đã xuất']);
+    }
+
  }
 ?>

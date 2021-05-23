@@ -8,11 +8,13 @@ require_once '../models/Good.php';
             $data = $good->showListGood();
             $numOfGood = $good ->getGoodNumber();
             $numOfImport = $good ->getImportGoodNum();
+            $numOfExport = $good -> getExportGoodNum();
             // var_dump($data);
             $params = [
                 'good' => $data,
                 'numOfGood' => $numOfGood,
-                'numOfImport' => $numOfImport
+                'numOfImport' => $numOfImport,
+                'numOfExport' => $numOfExport
             ]; 
             if(Application::$app->isGuest()){
                 return $this->render('greeting');
