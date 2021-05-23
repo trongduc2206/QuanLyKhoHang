@@ -90,6 +90,8 @@ abstract class DbModel extends Model{
        return $statement->fetchAll();
     }
 
+    
+
 
 
 

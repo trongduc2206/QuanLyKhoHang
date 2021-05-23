@@ -22,15 +22,19 @@
         background-image: 
           conic-gradient(red, yellow, green);
     }
+  
     
 </style>
 
 
 
 <div class='table'>
-  <?php echo "<h2>Total Number Of Your Good: ".$numOfGood[0]['COUNT']."</h2>" ?>
+  <?php echo "<h1>Total Number Of Your Good: ".$numOfGood[0]['COUNT']."</h1>" ?>
   <?php echo "<h2>Number Of Your Import Good: ".$numOfImport[0]['COUNT']."</h2>" ?>
   <?php echo "<h2>Number Of Your Export Good: ".$numOfExport[0]['COUNT']."</h2>" ?>
+  
+<hr class="solid">
+  <?php echo "<h1>Total Number Of Your Partner: ".$numOfPartner."</h1>" ?>
 
 
 </div>

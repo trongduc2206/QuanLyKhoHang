@@ -144,6 +144,43 @@ body {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+hr.solid {
+  border-top: 3px solid #bbb;
+}
+#good {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#good td, #good th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#good tr:nth-child(even){background-color: #f2f2f2;}
+
+#good tr:hover {background-color: #ddd;}
+
+#good th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+.button{
+  font-weight: 12;
+  margin-top: 10px;
+  color: #666;
+  font-size: 16px;
+  text-align: center;
+  padding: 10px 22px;
+  border-radius: 12px;
+  background-color: #EFF8FB;
+}
+
+.button:hover {background-color: #4CAF50; color: white;}
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 800px) {
   .leftcolumn, .rightcolumn {   

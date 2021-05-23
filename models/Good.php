@@ -60,5 +60,14 @@ class Good extends DbModel{
         return $this->getTotalNumberWhere($this->primaryKey(), ['status'=>'Đã xuất']);
     }
 
+    public function getPartnerNum(){
+        $partners = $this->getPartnerList();
+        $partnerNum =0;
+        foreach($partners as $key=>$partner){
+            $partnerNum++;
+        }
+        return $partnerNum;
+    }
+
  }
 ?>
