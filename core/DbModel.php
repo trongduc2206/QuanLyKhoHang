@@ -57,6 +57,7 @@ abstract class DbModel extends Model{
 
     public function queryCustom(string $sql){
         $statement = self::prepare($sql);
+        // var_dump($statement);
         $statement->execute();
         return $statement->fetchAll();
     }
@@ -89,11 +90,6 @@ abstract class DbModel extends Model{
        $statement->execute();
        return $statement->fetchAll();
     }
-
-    
-
-
-
 
     public static function prepare($sql){
         return  Application::$app->db->pdo->prepare($sql);

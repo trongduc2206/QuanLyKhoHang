@@ -50,5 +50,9 @@ require_once '../models/ImportForm.php';
             return $this->render('export', $params);
             
         }
+
+        public function getPartner(){
+            echo "<h1>Partner</h1>";
+        }
     }
 ?>
