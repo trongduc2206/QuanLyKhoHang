@@ -1,4 +1,6 @@
-<h1>Register</h1>
+<div class="row">
+<div class="column left">
+<h2>Register</h2>
 <?php require_once '../core/form/Form.php';
 $form =  Form::begin('',"post") 
 ?>
@@ -15,10 +17,21 @@ $form =  Form::begin('',"post")
     <?php 
         echo $form -> field($model, 'name')
     ?>
+     <hr>
+    
     <button type="submit-register">Submit</button>
+    <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn" onclick="window.location.href='/'">Cancel</button>
+    
+  </div>
 
 <?php require_once '../core/form/Form.php';
  Form::end() ?>
+</div>
+<div class="column right">
+<img src="login.jpg" class="image">
+</div>
+</div>
 <!-- <form action='' method='POST'>
 <table>
     <tr>

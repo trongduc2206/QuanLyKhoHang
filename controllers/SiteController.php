@@ -5,6 +5,7 @@ require_once '../models/Good.php';
     class SiteController extends Controller {
         public function home(){
             if(Application::$app->isGuest()){
+                $this->setLayout('greet');
                 return $this->render('greeting');
             } else {
                 $good = new Good();
