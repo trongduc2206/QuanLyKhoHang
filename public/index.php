@@ -11,7 +11,7 @@ $config = [
     'db' => [
         'dsn' => 'mysql:host=localhost;port=3306;dbname=cnweb_btl',
         'user' => 'root',
-        'password' => 'trongduc22062000'    
+        'password' => ''    
     ]
 ];
 
@@ -22,6 +22,11 @@ $app->router->get('/', [SiteController::class, 'home']);
 $app->router->get('/import', [DataController::class,'getImportGood']);
 $app->router->post('/import', [DataController::class,'getImportGood']);
 $app->router->put('/import', [DataController::class,'getImportGood']);
+
+$app->router->get('/search', [DataController::class, 'search']);
+$app->router->post('/search', [DataController::class, 'search']);
+$app->router->get('/delete', [DataController:: class, 'delete']);
+$app->router->post('/delete', [DataController:: class, 'delete']);
 
 $app->router->get('/partner',[DataController::class,'getPartner']);
 

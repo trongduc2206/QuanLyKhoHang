@@ -54,5 +54,13 @@ require_once '../models/ImportForm.php';
         public function getPartner(){
             echo "<h1>Partner</h1>";
         }
+
+        public function search(){
+            echo "<h1>Search</h1>";
+        }
+
+        public function delete(){
+            echo "<h1>Delete</h1>";
+        }
     }
 ?>

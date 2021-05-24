@@ -1,6 +1,6 @@
 create table merchant(
     id bigint auto_increment primary key,
-    username varchar(250) unique ,
+    username varchar(250) unique,
     password varchar(250),
     name varchar(250)
 );
@@ -18,13 +18,13 @@ create table good(
         status varchar(250),
         description varchar(250),
         import_date timestamp default CURRENT_TIMESTAMP,
-        export_date timestamp,
-	quantity bigint, 
+        export_date timestamp default CURRENT_TIMESTAMP,
+	    quantity bigint, 
         merchant_id bigint,
         partner_id bigint,
-         constraint merchant_good
+        constraint merchant_good
         foreign key (merchant_id) references merchant (id),
-         constraint partner_good
+        constraint partner_good
         foreign key (partner_id) references partner (id)
 );
 
@@ -54,5 +54,20 @@ insert into good(name, type, status, description, import_date, merchant_id, part
 insert into good(name, type, status, description, import_date, merchant_id, partner_id, quantity, export_date) VALUES ('Màn hình', 'Linh kiện', 'Đã xuất', 'Linh kiện sản xuất TV', '2020-08-06 14:22:23',1,1,500, '2020-10-06 14:22:23');
 
 
-
-
+insert into good(name, type, status, description, import_date, merchant_id, partner_id, quantity) VALUES ('Điện trở', 'Linh kiện', 'Đã nhập', 'Linh kiện sản xuất TV', '2020-08-06 14:22:23',3,1,500);
+insert into good(name, type, status, description, import_date, merchant_id, partner_id, quantity) VALUES ('Tụ điện', 'Linh kiện', 'Đã nhập', 'Linh kiện sản xuất TV', '2020-08-06 14:22:23',3,2,500);
+insert into good(name, type, status, description, import_date, merchant_id, partner_id, quantity) VALUES ('Đèn led', 'Linh kiện', 'Đã nhập', 'Linh kiện sản xuất TV', '2020-08-06 14:22:23',3,2,500);
+insert into good(name, type, status, description, import_date, merchant_id, partner_id, quantity) VALUES ('Cuộn cảm', 'Linh kiện', 'Đã nhập', 'Linh kiện sản xuất TV', '2020-08-06 14:22:23',3,1,500);
+insert into good(name, type, status, description, import_date, merchant_id, partner_id, quantity) VALUES ('Vi mạch', 'Linh kiện', 'Đã nhập', 'Linh kiện sản xuất TV', '2020-08-06 14:22:23',3,1,500);
+insert into good(name, type, status, description, import_date, merchant_id, partner_id, quantity) VALUES ('Camera nhỏ', 'Linh kiện', 'Đã nhập', 'Linh kiện sản xuất TV', '2020-08-06 14:22:23',3,3,500);
+insert into good(name, type, status, description, import_date, merchant_id, partner_id, quantity) VALUES ('Tai nghe', 'Linh kiện', 'Đã nhập', 'Linh kiện sản xuất TV', '2020-08-06 14:22:23',3,3,500);
+insert into good(name, type, status, description, import_date, merchant_id, partner_id, quantity) VALUES ('Màn hình', 'Linh kiện', 'Đã nhập', 'Linh kiện sản xuất TV', '2020-08-06 14:22:23',3,1,500);
+insert into good(name, type, status, description, import_date, merchant_id, partner_id, quantity) VALUES ('Màn hình', 'Linh kiện', 'Đã nhập', 'Linh kiện sản xuất TV', '2020-08-06 14:22:23',3,3,500);
+insert into good(name, type, status, description, import_date, merchant_id, partner_id, quantity, export_date) VALUES ('Đèn led', 'Linh kiện', 'Đã xuất', 'Linh kiện sản xuất TV', '2020-08-06 14:22:23',3,1,500, '2020-10-06 14:22:23');
+insert into good(name, type, status, description, import_date, merchant_id, partner_id, quantity, export_date) VALUES ('Tụ điện', 'Linh kiện', 'Đã xuất', 'Linh kiện sản xuất TV', '2020-08-06 14:22:23',3,1,500, '2020-10-06 14:22:23');
+insert into good(name, type, status, description, import_date, merchant_id, partner_id, quantity, export_date) VALUES ('Đèn led', 'Linh kiện', 'Đã xuất', 'Linh kiện sản xuất TV', '2020-08-06 14:22:23',3,2,500, '2020-10-06 14:22:23');
+insert into good(name, type, status, description, import_date, merchant_id, partner_id, quantity, export_date) VALUES ('Cuộn cảm', 'Linh kiện', 'Đã xuất', 'Linh kiện sản xuất TV', '2020-08-06 14:22:23',3,3,500, '2020-10-06 14:22:23');
+insert into good(name, type, status, description, import_date, merchant_id, partner_id, quantity, export_date) VALUES ('Vi mạch', 'Linh kiện', 'Đã xuất', 'Linh kiện sản xuất TV', '2020-08-06 14:22:23',3,2,500, '2020-10-06 14:22:23');
+insert into good(name, type, status, description, import_date, merchant_id, partner_id, quantity, export_date) VALUES ('Camera nhỏ', 'Linh kiện', 'Đã xuất', 'Linh kiện sản xuất TV', '2020-08-06 14:22:23',3,3,500, '2020-10-06 14:22:23');
+insert into good(name, type, status, description, import_date, merchant_id, partner_id, quantity, export_date) VALUES ('Tai nghe', 'Linh kiện', 'Đã xuất', 'Linh kiện sản xuất TV', '2020-08-06 14:22:23',3,1,500, '2020-10-06 14:22:23');
+insert into good(name, type, status, description, import_date, merchant_id, partner_id, quantity, export_date) VALUES ('Màn hình', 'Linh kiện', 'Đã xuất', 'Linh kiện sản xuất TV', '2020-08-06 14:22:23',3,1,500, '2020-10-06 14:22:23');
