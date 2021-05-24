@@ -57,7 +57,7 @@
         
         <button class="button" id="myBtn">ADD</button>
 
-        <div id="myModal" class="modal">
+        <div id="myModal" class="modal" <?php if($invalid) echo "style='display: block;'" ?> >
 
   <!-- Modal content -->
         <div class="modal-content">
