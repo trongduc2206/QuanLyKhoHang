@@ -12,7 +12,7 @@
         public string $partner_id='';
         public function rules():array{
             return [
-                'import_date' => [self::RULE_REQUIRED]
+                'export_date' => [self::RULE_REQUIRED],
             ];
         }
 

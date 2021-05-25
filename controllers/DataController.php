@@ -53,9 +53,12 @@ class DataController extends Controller {
             // echo '<pre>';
             // echo var_dump($good);
             // echo '</pre>';  
-            $good->updateExportGood();
-            $response->redirect("/export");
+            if($good->validate()) {
+                $good->updateExportGood();
+                $response->redirect("/export");
                 return;
+            } else 
+                $invalid = true;
         } 
         $params = [
             'good' => $data,
@@ -72,16 +75,20 @@ class DataController extends Controller {
         $invalid = false;
         // var_dump($data);
         if($request->isPost()){
-            echo '<pre>';
-            echo var_dump($request->getBody());
-            echo '</pre>';  
+            // echo '<pre>';
+            // echo var_dump($request->getBody());
+            // echo '</pre>';  
             $partner->loadData($request->getBody());
-            echo '<pre>';
-            echo var_dump($partner);
-            echo '</pre>';  
-            $partner->addPartner();
-            $response->redirect("/partner");
+            // echo '<pre>';
+            // echo var_dump($partner);
+            // echo '</pre>';  
+            if($partner->validate()) {
+                $partner->addPartner();
+                $response->redirect("/partner");
                 return;
+            } else 
+                $invalid = true;
+            
         } 
         $params = [
             'partner' => $data,

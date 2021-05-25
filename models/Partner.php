@@ -14,7 +14,9 @@ class Partner extends DbModel {
     }
 
     public function rules():array{
-        return [];
+        return [
+            'name' => [self::RULE_REQUIRED]
+        ];
     }
 
     public function tableName(): string
