@@ -6,6 +6,7 @@ class Good extends DbModel{
     ";
     private string $QUERY_EXPORT = "select good.*, partner.name as partnername from good, partner where good.status='Đã xuất' and good.partner_id=partner.id and merchant_id=";
 
+    private string $QUERY_ALL = "select good.*, partner.name as partnername from good, partner where good.partner_id=partner.id and merchant_id=";
     public function tableName(): string
     {
         return 'good';
@@ -33,6 +34,13 @@ class Good extends DbModel{
         return $this->findMany(['merchant_id' => Application::$app->session->get('user')]);
     }
 
+    public function updateGoodStatus(string $id, string $export_date) {
+        $sql= "update good set status='Đã xuất', export_date='".$export_date."' where id=".$id." and merchant_id=".Application::$app->session->get('user');
+        echo "in sql func<br>";
+        echo $sql."<br>";
+        $this->queryCustom($sql);
+    }
+
     public function showImportGood(){
         $sql= $this->QUERY_IMPORT.Application::$app->session->get('user');
         return $this->queryCustom($sql);
@@ -43,6 +51,10 @@ class Good extends DbModel{
         return $this->queryCustom($sql);
     }
 
+    public function showAllGood() {
+        $sql = $this->QUERY_ALL.Application::$app->session->get('user');
+        return $this->queryCustom($sql);
+    }
     public function getPartnerList(){
         $sql= "select distinct partner.* from partner, good where good.partner_id=partner.id and good.merchant_id=". Application::$app->session->get('user');
         return $this->queryCustom($sql);

@@ -9,9 +9,9 @@ require_once '../models/User.php';
 $config = [
     'userClass' => User::class,
     'db' => [
-        'dsn' => 'mysql:host=localhost;port=3306;dbname=cnweb_btl',
+        'dsn' => 'mysql:host=localhost;port=3306;dbname=quan_ly_hang_hoa',
         'user' => 'root',
-        'password' => 'trongduc22062000'    
+        'password' => 'your_password'    
     ]
 ];
 
@@ -24,10 +24,10 @@ $app->router->post('/import', [DataController::class,'getImportGood']);
 $app->router->put('/import', [DataController::class,'getImportGood']);
 
 $app->router->get('/partner',[DataController::class,'getPartner']);
+$app->router->post('/partner',[DataController::class, 'getPartner']);
 
-
-$app->router->get('/export',  [DataController::class,'getExportGood']);
-
+$app->router->get('/export',  [DataController::class,'getAllGood']);
+$app->router->post('/export',  [DataController::class,'getAllGood']);
 
 $app->router->post('/', array(new SiteController(), 'handleHome') );
 
