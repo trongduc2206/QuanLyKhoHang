@@ -11,22 +11,25 @@ require_once '../models/SearchForm.php';
             $good = new ImportForm();
             $data = $good->showImportGood();
             $partner = $good->getPartnerList();
+            $invalid = false;
             // var_dump($data);
-            $params = [
-                'good' => $data,
-                'model' => $good,
-                'partner' => $partner
-            ]; 
+           
             if($request->isPost()){
                 var_dump($request->getBody());
                 $good->loadData($request->getBody());
                 if($good->validate() && $good->addImportGood()){
                 $response->redirect("/import");
                 return ;
+                } else {
+                    $invalid=true;
                 }
-            } else if($request->isPut()){
-                var_dump($request->getBody());
-            }
+            } 
+            $params = [
+                'good' => $data,
+                'model' => $good,
+                'partner' => $partner,
+                'invalid' => $invalid
+            ]; 
             return $this->render('import', $params);
             
         }

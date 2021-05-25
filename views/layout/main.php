@@ -16,6 +16,16 @@ body {
   background: #f1f1f1;
   margin: 0;
 }
+form {border: 3px solid #f1f1f1;}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
 
 /* Header/Blog Title */
 .header {
@@ -31,14 +41,14 @@ body {
 /* Style the top navigation bar */
 .topnav {
   overflow: hidden;
-  background-color: #EFF8FB;
+  background-color: black;
 }
 
 /* Style the topnav links */
 .topnav a {
   float: left;
   display: block;
-  color: #666;
+  color: #4CAF50;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -111,7 +121,7 @@ body {
   font-size: 17px;
   border: none;
   outline: none;
-  color: #666;
+  color: #4CAF50;
   padding: 14px 16px;
   background-color: inherit;
   font-family: inherit;
@@ -172,12 +182,12 @@ hr.solid {
 .button{
   font-weight: 12;
   margin-top: 10px;
-  color: #666;
+  color: #4CAF50;
   font-size: 16px;
   text-align: center;
   padding: 10px 22px;
   border-radius: 12px;
-  background-color: #EFF8FB;
+  background-color: black;
 }
 
 .button:hover {background-color: #4CAF50; color: white;}
@@ -229,7 +239,7 @@ hr.solid {
     <?php else: ?>
 
       <a href="/logout" style="float:right">Welcome <?php echo Application::$app->user->getDisplayName() ?>
-      (logout)
+      (Logout)
       </a>
     <?php  endif; ?>
 </div>
