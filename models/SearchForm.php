@@ -30,10 +30,21 @@
         // }
 
         public function searchByName(){
-            $sql = "select good.* , partner.name as partnername from good, partner where good.status='Đã nhập' 
-            and good.name= '$this->name' and good.partner_id=partner.id and merchant_id=
+            $sql = "select good.* , partner.name as partnername from good, partner where 
+            good.name= '$this->name' and good.partner_id=partner.id and merchant_id=
         " .Application::$app->session->get('user');
             return $this->queryCustom($sql);
         }
         
+        public function getAllData()
+        {
+            $sql = "select good.* , partner.name as partnername from good, partner where 
+            good.partner_id=partner.id and merchant_id=
+        " .Application::$app->session->get('user');
+            return $this->queryCustom($sql);
+        }
+
+        public function deleteGoodById($id){
+            return $this->deleteById($id);
+        }
     }

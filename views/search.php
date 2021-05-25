@@ -79,13 +79,14 @@
                     <th>Quantity</th>
                     <th>Description</th>
                     <th>Import Date</th>
+                    <th>Export Date</th>
                     <th>Partner Name</th>
             </tbody>
             <?php
             if(empty($search)) {
             foreach ($good as $key => $good) {
                 echo '<tr><td>' . $good['id'] . '</td><td>' . $good['name'] . '</td><td>' . $good['type'] . '</td><td>' . $good['quantity'] . '</td>
-            <td>' . $good['description'] . '</td><td>' . $good['import_date'] . '</td><td>' . $good['partnername'] . '</td></tr>
+            <td>' . $good['description'] . '</td><td>' . $good['import_date'] . '</td><td>' . $good['export_date'] . '</td><td>' . $good['partnername'] . '</td></tr>
             ';
             } 
             // echo "<h1>No Data</h1>";

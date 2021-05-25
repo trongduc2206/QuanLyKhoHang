@@ -61,12 +61,11 @@ require_once '../models/SearchForm.php';
 
         public function search(Request $request, Response $response){
             $searchForm = new SearchForm();
-            $data = $searchForm->showImportGood();
+            $data = $searchForm->getAllData();
             $partner = $searchForm->getPartnerList();
             $data2= [];
             // var_dump($request->isPost());
             if($request->isPost()){
-                //$data = $searchForm->searchByName($name);
                 //var_dump($request->getBody());
                 // var_dump($data);
                 $searchForm->loadData($request->getBody());
@@ -94,8 +93,8 @@ require_once '../models/SearchForm.php';
         }
 
         public function delete(Request $request, Response $response){
-            $deleteForm = new ImportForm();
-            $data = $deleteForm->showImportGood();
+            $deleteForm = new SearchForm();
+            $data = $deleteForm->getAllData();
             $partner = $deleteForm->getPartnerList();
             
             if(isset($_GET['id'])){
