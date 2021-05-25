@@ -12,7 +12,7 @@ require_once '../models/SearchForm.php';
             $data = $good->showImportGood();
             $partner = $good->getPartnerList();
             $invalid = false;
-            // var_dump($data);
+            //var_dump($data);
            
             if($request->isPost()){
                 var_dump($request->getBody());
@@ -68,6 +68,7 @@ require_once '../models/SearchForm.php';
                 $searchForm->loadData($request->getBody());
                 if($searchForm->validate()&& $searchForm->search($_POST['name'])){
                     $data = $searchForm->search($_POST['name']);
+                    var_dump($data);
                     $response->redirect('/search');
                 }
             }
@@ -81,8 +82,26 @@ require_once '../models/SearchForm.php';
             return $this->render('search', $params);
         }
 
-        public function delete(){
-            echo "<h1>Delete</h1>";
+        public function delete(Request $request, Response $response){
+            $deleteForm = new ImportForm();
+            $data = $deleteForm->showImportGood();
+            $partner = $deleteForm->getPartnerList();
+            
+            if(isset($_GET['id'])){
+                $data = $deleteForm->deleteGoodById($_GET['id']);
+                $response->redirect('/delete');
+                return;
+            } 
+
+            $params = [
+                'good' => $data,
+                'model' => $deleteForm,
+                'partner' => $partner
+            ]; 
+
+            
+            return $this->render('delete', $params);
+
         }
     }
 ?>

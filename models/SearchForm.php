@@ -33,7 +33,7 @@
         }
 
         public function search($name){
-            $good = (new Good)->findOne(['name'=>$this->name]);
+            $good = (new Good)->findMany(['name'=>$this->name]);
             
             return $good;
         }
