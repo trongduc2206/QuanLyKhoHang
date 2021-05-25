@@ -17,7 +17,7 @@ class Request {
         return $this->getMethod() === 'get';
     }
 
-    public function isPost(){
+    public function isPost(){ 
         return $this->getMethod() === 'post';
     }
 

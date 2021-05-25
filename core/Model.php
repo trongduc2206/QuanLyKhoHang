@@ -11,7 +11,7 @@ abstract class Model {
 
 
     public function loadData($data) {
-        // echo "here";
+        // echo "here in func loadData";
         foreach($data as $key=>$value){
             if(property_exists($this, $key)){
                 $this->{$key} = $value;
