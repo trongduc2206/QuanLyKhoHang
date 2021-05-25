@@ -65,13 +65,16 @@ require_once '../models/SearchForm.php';
             $partner = $searchForm->getPartnerList();
             
             if($request->isPost()){
+                //$name = isset($_POST['name']) ? $_POST['name'] : '';
+                //var_dump($_POST['name']);
+                //$data = $searchForm->searchByName($name);
+                echo "alkfhsdkulfhalkfa";
                 $searchForm->loadData($request->getBody());
-                if($searchForm->validate()&& $searchForm->search($_POST['name'])){
-                    $data = $searchForm->search($_POST['name']);
-                    var_dump($data);
-                    $response->redirect('/search');
-                }
-            }
+                $data = $searchForm->searchByName();
+                $response->redirect('/search');
+                return;
+            } 
+
             $params = [
                 'good' => $data,
                 'model' => $searchForm,
