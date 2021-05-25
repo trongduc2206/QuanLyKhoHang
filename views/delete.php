@@ -44,8 +44,20 @@
         color: #000;
         text-decoration: none;
         cursor: pointer;
-    }
+    }   
 </style>
+
+<script type="text/javascript">
+    function ConfirmDelete()
+    {
+        var x = confirm("Are you sure you want to delete?");
+        if (x)
+            return true;
+        else
+            return false;
+    }
+</script>
+
 <div class="table">
     <h2>Delete Good</h2>
     <hr class="solid">
@@ -66,9 +78,10 @@
             foreach ($good as $key => $good) {
                 echo '<tr><td>' . $good['id'] . '</td><td>' . $good['name'] . '</td><td>' . $good['type'] . '</td><td>' . $good['quantity'] . '</td>
             <td>' . $good['description'] . '</td><td>' . $good['import_date'] . '</td><td>' . $good['partnername'] . '</td><td>' . 
-            "<a href='delete?id=".$good['id']."'>Delete</a>" . '</td></tr>';
+            "<a href='delete?id=".$good['id']."' onclick = 'ConfirmDelete()'>Delete</a>" . '</td></tr>';
             }
             ?>
         </table>
     </div>
 
+    
