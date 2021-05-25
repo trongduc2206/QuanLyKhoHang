@@ -2,7 +2,7 @@
 require_once '../core/DbModel.php';
 class Good extends DbModel{
    
-    private string $QUERY_IMPORT = "select good.* , partner.name as partnername from good, partner where good.status='Đã nhập' and good.partner_id=partner.id and merchant_id=
+    private string $QUERY_IMPORT = "select good.* , partner.name as partnername from good, partner where good.status='Đã nhập' and good.partner_id=partner.id and good.merchant_id=
     ";
     private string $QUERY_EXPORT = "select good.*, partner.name as partnername from good, partner where good.status='Đã xuất' and good.partner_id=partner.id and merchant_id=";
 
