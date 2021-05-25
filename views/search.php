@@ -53,7 +53,7 @@
         <table>
             <tr>
                 <td><input type="text" name="name" placeholder="Nhập tên sản phẩm"></td>
-                <td><input type="submit" value="Tìm kiếm"></td>
+                <td><button type="submit-register">Submit</button></td>
             </tr>
         </table>
     </form>

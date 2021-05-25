@@ -1,14 +1,6 @@
 <?php
     class SearchForm extends Good{
-        public string $id='';
         public string $name='';
-        public string $type='';
-        public string $status='';
-        public string $import_date='';
-        public string $description='';
-        public string $quantity='';
-        public string $merchant_id='';
-        public string $partner_id='';
         public function rules():array{
             return [
                 'name' => [self::RULE_REQUIRED],
@@ -29,13 +21,20 @@
 
         public function attributes(): array
         {
-        return ['name','type', 'status', 'description', 'import_date', 'quantity', 'merchant_id', 'partner_id'];
+        return ['name'];
         }
 
-        public function search($name){
-            $good = (new Good)->findMany(['name'=>$this->name]);
-            
-            return $good;
+        // public function searchByName($name){
+        //     $sql = "SELECT * FROM good where name regexp '$name';";
+        //     return $this->queryCustom($sql);
+        // }
+
+        public function searchByName(){
+            $sql = "select good.* , partner.name as partnername from good, partner where good.status='Đã nhập' 
+            and good.name= '$this->name' and good.partner_id=partner.id and merchant_id=
+        " .Application::$app->session->get('user');
+        var_dump($sql);
+            return $this->queryCustom($sql);
         }
         
     }
