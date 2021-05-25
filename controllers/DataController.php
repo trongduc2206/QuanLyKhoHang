@@ -4,28 +4,32 @@ require_once '../core/Request.php';
 require_once '../core/Response.php';
 require_once '../models/Good.php';
 require_once '../models/ImportForm.php';
+require_once '../models/SearchForm.php';
 
     class DataController extends Controller {
         public function getImportGood(Request $request, Response $response){
             $good = new ImportForm();
             $data = $good->showImportGood();
             $partner = $good->getPartnerList();
-            // var_dump($data);
-            $params = [
-                'good' => $data,
-                'model' => $good,
-                'partner' => $partner
-            ]; 
+            $invalid = false;
+            //var_dump($data);
+           
             if($request->isPost()){
                 var_dump($request->getBody());
                 $good->loadData($request->getBody());
                 if($good->validate() && $good->addImportGood()){
                 $response->redirect("/import");
                 return ;
+                } else {
+                    $invalid=true;
                 }
-            } else if($request->isPut()){
-                var_dump($request->getBody());
-            }
+            } 
+            $params = [
+                'good' => $data,
+                'model' => $good,
+                'partner' => $partner,
+                'invalid' => $invalid
+            ]; 
             return $this->render('import', $params);
             
         }
@@ -55,12 +59,49 @@ require_once '../models/ImportForm.php';
             echo "<h1>Partner</h1>";
         }
 
-        public function search(){
-            echo "<h1>Search</h1>";
+        public function search(Request $request, Response $response){
+            $searchForm = new SearchForm();
+            $data = $searchForm->showImportGood();
+            $partner = $searchForm->getPartnerList();
+            
+            if($request->isPost()){
+                $searchForm->loadData($request->getBody());
+                if($searchForm->validate()&& $searchForm->search($_POST['name'])){
+                    $data = $searchForm->search($_POST['name']);
+                    var_dump($data);
+                    $response->redirect('/search');
+                }
+            }
+            $params = [
+                'good' => $data,
+                'model' => $searchForm,
+                'partner' => $partner
+            ]; 
+
+            
+            return $this->render('search', $params);
         }
 
-        public function delete(){
-            echo "<h1>Delete</h1>";
+        public function delete(Request $request, Response $response){
+            $deleteForm = new ImportForm();
+            $data = $deleteForm->showImportGood();
+            $partner = $deleteForm->getPartnerList();
+            
+            if(isset($_GET['id'])){
+                $data = $deleteForm->deleteGoodById($_GET['id']);
+                $response->redirect('/delete');
+                return;
+            } 
+
+            $params = [
+                'good' => $data,
+                'model' => $deleteForm,
+                'partner' => $partner
+            ]; 
+
+            
+            return $this->render('delete', $params);
+
         }
     }
 ?>
