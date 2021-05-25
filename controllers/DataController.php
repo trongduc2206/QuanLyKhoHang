@@ -12,7 +12,7 @@ require_once '../models/SearchForm.php';
             $data = $good->showImportGood();
             $partner = $good->getPartnerList();
             $invalid = false;
-            //var_dump($data);
+            
            
             if($request->isPost()){
                 var_dump($request->getBody());
@@ -63,22 +63,30 @@ require_once '../models/SearchForm.php';
             $searchForm = new SearchForm();
             $data = $searchForm->showImportGood();
             $partner = $searchForm->getPartnerList();
-            
+            $data2= [];
+            // var_dump($request->isPost());
             if($request->isPost()){
-                //$name = isset($_POST['name']) ? $_POST['name'] : '';
-                //var_dump($_POST['name']);
                 //$data = $searchForm->searchByName($name);
-                echo "alkfhsdkulfhalkfa";
+                //var_dump($request->getBody());
+                // var_dump($data);
                 $searchForm->loadData($request->getBody());
-                $data = $searchForm->searchByName();
-                $response->redirect('/search');
-                return;
+                if($searchForm->validate()){
+                $data2 = $searchForm->searchByName();
+                // var_dump($data2);
+                $params=[
+                    'search' => $data2,
+                    'model' => $searchForm
+                ];
+                // $response->redirect('/search');
+                return $this->render('search', $params);;
+                }
             } 
 
             $params = [
                 'good' => $data,
                 'model' => $searchForm,
-                'partner' => $partner
+                'partner' => $partner,
+                'search' => $data2
             ]; 
 
             

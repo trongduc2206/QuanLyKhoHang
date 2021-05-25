@@ -33,7 +33,6 @@
             $sql = "select good.* , partner.name as partnername from good, partner where good.status='Đã nhập' 
             and good.name= '$this->name' and good.partner_id=partner.id and merchant_id=
         " .Application::$app->session->get('user');
-        var_dump($sql);
             return $this->queryCustom($sql);
         }
         

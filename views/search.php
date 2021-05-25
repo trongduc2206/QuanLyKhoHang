@@ -49,14 +49,26 @@
 <div class="table">
     <h2>Search Good</h2>
     <hr class="solid">
-    <form action="" method="post">
+    <!-- <form action="" method="post">
         <table>
             <tr>
                 <td><input type="text" name="name" placeholder="Nhập tên sản phẩm"></td>
                 <td><button type="submit-register">Submit</button></td>
             </tr>
         </table>
-    </form>
+    </form> -->
+    <?php require_once '../core/form/Form.php';
+    $form =  Form::begin('',"post") 
+    ?>
+        <?php 
+        echo $form -> field($model, 'name')
+    ?>
+    
+    <button type="submit">Search</button>
+    <?php require_once '../core/form/Form.php';
+    Form::end() ?>
+    </div>
+
     <div class='table-content'>
         <table border="1" id="good">
             <tbody>
@@ -70,10 +82,19 @@
                     <th>Partner Name</th>
             </tbody>
             <?php
+            if(empty($search)) {
             foreach ($good as $key => $good) {
                 echo '<tr><td>' . $good['id'] . '</td><td>' . $good['name'] . '</td><td>' . $good['type'] . '</td><td>' . $good['quantity'] . '</td>
             <td>' . $good['description'] . '</td><td>' . $good['import_date'] . '</td><td>' . $good['partnername'] . '</td></tr>
             ';
+            } 
+            // echo "<h1>No Data</h1>";
+            } else {
+                foreach ($search as $key => $good) {
+                    echo '<tr><td>' . $good['id'] . '</td><td>' . $good['name'] . '</td><td>' . $good['type'] . '</td><td>' . $good['quantity'] . '</td>
+                <td>' . $good['description'] . '</td><td>' . $good['import_date'] . '</td><td>' . $good['partnername'] . '</td></tr>
+                ';
+                }
             }
             ?>
         </table>

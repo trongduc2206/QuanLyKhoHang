@@ -37,7 +37,7 @@
 
 
         public function save(){
-            echo "here";
+            // echo "here";
             $this->merchant_id = Application::$app->session->get('user');
             $partners= $this->getPartnerList();
             // var_dump($this);
