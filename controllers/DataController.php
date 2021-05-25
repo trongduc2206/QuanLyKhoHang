@@ -8,8 +8,11 @@ require_once '../models/ImportForm.php';
     class DataController extends Controller {
         public function getImportGood(Request $request, Response $response){
             $good = new ImportForm();
-            $data = $good->showImportGood();
+            $data = $this->paginationData($request,$good->showImportGood()); 
             $partner = $good->getPartnerList();
+            $importGoodNum = $good->getImportGoodNum();
+            $path = $request -> getPath();
+            $query = $request -> getQuery(); var_dump($query);
             $invalid = false;
             // var_dump($data);
            
@@ -17,7 +20,7 @@ require_once '../models/ImportForm.php';
                 var_dump($request->getBody());
                 $good->loadData($request->getBody());
                 if($good->validate() && $good->addImportGood()){
-                $response->redirect("/import");
+                $response->redirect("/import?page=".$query["page"]);
                 return ;
                 } else {
                     $invalid=true;
@@ -27,10 +30,24 @@ require_once '../models/ImportForm.php';
                 'good' => $data,
                 'model' => $good,
                 'partner' => $partner,
-                'invalid' => $invalid
+                'invalid' => $invalid,
+                'importGoodNum' => $importGoodNum,
+                'path' => $path,
+                'query' => $query
             ]; 
             return $this->render('import', $params);
             
+        }
+        public function paginationData(Request $request, $data){
+            $query = $request -> getQuery();
+            $pagination = [];
+            $cnt =1 ;
+            foreach($data as $key => $item){
+                $page = ceil($cnt/10);
+                $pagination[$page][$key]= $item;
+                $cnt++;
+            }
+            return $pagination;
         }
 
         public function addImportGood(Request $request, Response $response){
