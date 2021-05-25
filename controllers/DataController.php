@@ -4,6 +4,7 @@ require_once '../core/Request.php';
 require_once '../core/Response.php';
 require_once '../models/Good.php';
 require_once '../models/ImportForm.php';
+require_once '../models/SearchForm.php';
 
     class DataController extends Controller {
         public function getImportGood(Request $request, Response $response){
@@ -55,8 +56,26 @@ require_once '../models/ImportForm.php';
             echo "<h1>Partner</h1>";
         }
 
-        public function search(){
-            echo "<h1>Search</h1>";
+        public function search(Request $request, Response $response){
+            $searchForm = new SearchForm();
+            $data = $searchForm->showImportGood();
+            $partner = $searchForm->getPartnerList();
+            
+            if($request->isPost()){
+                $searchForm->loadData($request->getBody());
+                if($searchForm->validate()&& $searchForm->search($_POST['name'])){
+                    $data = $searchForm->search($_POST['name']);
+                    $response->redirect('/search');
+                }
+            }
+            $params = [
+                'good' => $data,
+                'model' => $searchForm,
+                'partner' => $partner
+            ]; 
+
+            
+            return $this->render('search', $params);
         }
 
         public function delete(){
