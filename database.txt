@@ -8,7 +8,8 @@ create table partner (
     id bigint auto_increment primary key,
     name varchar(250),
     status varchar(250),
-    relation varchar(250)
+    relation varchar(250),
+    merchant_id bigint references merchant(id)
 );
 
 create table good(
