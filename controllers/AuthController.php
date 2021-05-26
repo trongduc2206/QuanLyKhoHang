@@ -33,10 +33,10 @@ class AuthController extends Controller{
                 Application::$app->response->redirect('/');
                 exit;
             }
-            var_dump($registerModel->errors);
-            return $this->render('register',[
-                'model' => $registerModel
-            ]);
+            // var_dump($registerModel->errors);
+            // return $this->render('register',[
+            //     'model' => $registerModel
+            // ]);
         }
         $this->setLayout('auth');
         return $this -> render('register',[

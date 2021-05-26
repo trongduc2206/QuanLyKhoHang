@@ -56,20 +56,20 @@ class Good extends DbModel{
         return $this->queryCustom($sql);
     }
     public function getPartnerList(){
-        $sql= "select distinct partner.* from partner, good where good.partner_id=partner.id and good.merchant_id=". Application::$app->session->get('user');
+        $sql= "select * from partner where merchant_id=". Application::$app->session->get('user');
         return $this->queryCustom($sql);
     }
 
     public function getGoodNumber(){
-        return $this->getTotalNumber($this->primaryKey());
+        return $this->getTotalNumberWhere($this->primaryKey(),['merchant_id' => Application::$app->session->get('user')]);
     }
 
     public function getImportGoodNum(){
-        return $this->getTotalNumberWhere($this->primaryKey(), ['status'=>'Đã nhập']);
+        return $this->getTotalNumberWhere($this->primaryKey(), ['status'=>'Đã nhập', 'merchant_id' => Application::$app->session->get('user')]);
     }
 
     public function getExportGoodNum(){
-        return $this->getTotalNumberWhere($this->primaryKey(), ['status'=>'Đã xuất']);
+        return $this->getTotalNumberWhere($this->primaryKey(), ['status'=>'Đã xuất', 'merchant_id' => Application::$app->session->get('user')]);
     }
 
     public function getPartnerNum(){
@@ -80,6 +80,8 @@ class Good extends DbModel{
         }
         return $partnerNum;
     }
+
+    
 
  }
 ?>
