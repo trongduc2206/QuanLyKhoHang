@@ -58,6 +58,18 @@
   background-color: #ddd;
   border-radius: 5px;
 }
+.table{
+    margin-top : 50px ;
+    height: 300px;
+    }
+  .table h1{
+    font-family : serif ;
+    color : #ff0000 ;
+  }
+
+  .table h2{
+    color : #0909f2 ;
+  }
 </style>
 <div class="table">
         <h2>Partner</h2>

@@ -22,10 +22,19 @@
         background-image: 
           conic-gradient(red, yellow, green);
     }
-  .table{
-    margin-top : 0 ;
+    .table{
+    margin-top : 50px ;
+    height: 300px;
+    background: #f4eded ;
+    }
+    .table h1{
+    font-family : serif ;
+    color : #ff0000 ;
   }
-    
+
+  .table h2{
+    color : #0909f2 ;
+  }
 </style>
 
 
@@ -41,7 +50,6 @@
 
 </div>
 <div class="table">
-        <h2>Stock Data</h2>
         <!-- <div class="pie" data-start="0" data-value="30"></div>
 <div class="pie highlight" data-start="30" data-value="30"></div>
 <div class="pie" data-start="60" data-value="40"></div>

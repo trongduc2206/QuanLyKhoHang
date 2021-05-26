@@ -67,6 +67,9 @@
         background-color: #ddd;
         border-radius: 5px;
     }
+    .table{
+        margin-top : 0 ;
+      }
 </style>
 <div class="table">
     <h2>Search Good</h2>

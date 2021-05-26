@@ -43,13 +43,16 @@ input[type=text], input[type=password] {
 .topnav {
   overflow: hidden;
   background-color: black;
+  position: fixed;
+  right: 0;
+  left : 0 ;
 }
 
 /* Style the topnav links */
 .topnav a {
   float: left;
   display: block;
-  color: #4CAF50;
+  color: #f4f449;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -101,12 +104,19 @@ input[type=text], input[type=password] {
 .footer {
   padding: 20px;
   text-align: center;
-  background: #fff;
+  background: #f4eded ;
   margin-top: 0px;
+  margin-bottom : 0 ;
   /* position: fixed;
   left: 0;
   bottom: 0;
   width: 100%; */
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100px;
+  width: 100%;
+
 }
 
 .footer .footer-class{
@@ -205,12 +215,12 @@ hr.solid {
 .button{
   font-weight: 12;
   margin-top: 10px;
-  color: #4CAF50;
+  color: #33333;
   font-size: 16px;
   text-align: center;
   padding: 10px 22px;
   border-radius: 12px;
-  background-color: black;
+  background-color: #acc8e5;
 }
 
 .button:hover {background-color: #4CAF50; color: white;}
@@ -229,6 +239,13 @@ hr.solid {
     width: 100%;
   }
 }
+  html {
+    position: relative;
+    min-height: 100%;
+  }
+  body {
+    margin: 0 0 100px; /* bottom = footer height */
+  }
 </style>
 </head>
 <body>

@@ -1,3 +1,4 @@
+<!-- <link rel="stylesheet" href="style.css"> -->
 <style>
   .modal {
     display: none;
@@ -45,28 +46,45 @@
     text-decoration: none;
     cursor: pointer;
   }
-
   .pagination {
-  display: inline-block;
-}
+    display: inline-block;
+    width: 100%;
+  }
 
-.pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-}
+  .pagination a {
+    color: #187ce0;
+    float: right;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-style: groove ;
+    border-width: 1px;
+    background-color: #f4f4b7 ;
+    margin-top : 5px ;
+  }
 
-.pagination a.active {
-  background-color: #4CAF50;
-  color: white;
-  border-radius: 5px;
-}
 
-.pagination a:hover:not(.active) {
-  background-color: #ddd;
-  border-radius: 5px;
-}
+  .pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 10px;
+  }
+
+  .pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
+  }
+  .table{
+    margin-top : 50px ;
+
+  }
+  .table h1{
+    font-family : serif ;
+    color : #ff0000 ;
+  }
+
+  .table h2{
+    color : #0909f2 ;
+  }
 </style>
 <div class="table">
   <!-- <?php

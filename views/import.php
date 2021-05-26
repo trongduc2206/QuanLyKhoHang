@@ -1,3 +1,7 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
 <style>
   .modal {
     display: none;
@@ -52,13 +56,14 @@
   }
 
   .pagination a {
-    color: #000;
+    color: #187ce0;
     float: right;
     padding: 8px 16px;
     text-decoration: none;
     border-style: groove ;
     border-width: 1px;
-    background-color: #b7ae89 ;
+    background-color: #f4f4b7 ;
+    margin-top : 5px ;
   }
 
   .pagination a.active {
@@ -71,7 +76,19 @@
     background-color: #ddd;
     border-radius: 5px;
   }
+  .table{
+    margin-top : 50px ;
+  }
+  .table h1{
+    font-family : serif ;
+    color : #ff0000 ;
+  }
+
+  .table h2{
+    color : #0909f2 ;
+  }
 </style>
+</head>
 <div class="table">
   <h2>Import Good</h2>
   <hr class="solid">
@@ -197,3 +214,4 @@
     }
   </script>
   <div>
+  </html>

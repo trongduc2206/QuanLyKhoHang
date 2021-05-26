@@ -67,6 +67,19 @@
         background-color: #ddd;
         border-radius: 5px;
     }
+    .table{
+    margin-top : 50px ;
+    height: 300px;
+    background: #f4eded ;
+    }
+    .table h1{
+    font-family : serif ;
+    color : #ff0000 ;
+  }
+
+  .table h2{
+    color : #0909f2 ;
+  }
 </style>
 
 <script type="text/javascript">
