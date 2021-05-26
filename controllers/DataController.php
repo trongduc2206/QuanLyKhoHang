@@ -161,7 +161,7 @@ class DataController extends Controller
             // echo '</pre>';  
             if ($export_good->validate()) {
                 $export_good->updateExportGood();
-                $response->redirect("/export");
+                $response->redirect("/export?page=" . $query["page"]);
                 return;
             } else
                 $invalid = true;
