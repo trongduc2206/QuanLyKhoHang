@@ -95,10 +95,12 @@
 </div>
 
 <div class="table">
-    <h2>Delete Good</h2>
+<?php if(!empty($good)) : ?>
+    <h2>Result</h2>
     <!-- <?php if ($good) ?> -->
     <hr class="solid">
     <div class='table-content'>
+        
         <table border="1" id="good">
             <tbody>
                 <tr>
@@ -113,11 +115,18 @@
                     <th>Delete</th>
             </tbody>
             <?php
+            if(!empty($good)){
             foreach ($good as $key => $good) {
                 echo '<tr><td>' . $good['id'] . '</td><td>' . $good['name'] . '</td><td>' . $good['type'] . '</td><td>' . $good['quantity'] . '</td>
                 <td>' . $good['description'] . '</td><td>' . $good['import_date'] . '</td><td>' . $good['export_date'] . '</td><td>' . $good['partnername'] . '</td><td>' .
-                "<a href='delete?id=" . $good['id'] . "' onclick = 'ConfirmDelete()'>Delete</a>" . '</td></tr>';
+                "<a href='manage?id=" . $good['id'] . "' onclick = 'ConfirmDelete()'>Delete</a>" . '</td></tr>';
             }
+        }
             ?>
         </table>
+        <button type="button" class="cancelbtn" onclick="window.location.href='/manage'">Refresh</button>
+
+        <?php else : ?>
+            <h1>Type the name of good you want to search </h1>
+        <?php endif;?>
     </div>

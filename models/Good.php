@@ -80,6 +80,10 @@ class Good extends DbModel{
         }
         return $partnerNum;
     }
+    public function findNameById($id){
+        $sql = "select name from good where id = $id";
+        return $this->queryCustom($sql);
+    }
 
     
 

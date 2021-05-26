@@ -119,15 +119,17 @@ class DataController extends Controller
     public function delete(Request $request, Response $response)
     {
         $deleteForm = new SearchForm();
-        $data = $deleteForm->getAllData();
+        $data = [];
+        // $data = $deleteForm->getAllData();
         $partner = $deleteForm->getPartnerList();
         //$deleteGoodNum = $deleteForm->getGoodNumber();
         $path = $request->getPath();
         $query = $request->getQuery();
-        
         $data2 = [];
+        $searchQuery ='';
         if ($request->isPost()) {
-            //var_dump($request->getBody());
+            // var_dump($request->getBody()); exit; 
+            $searchQuery = $request->getBody();
             // var_dump($data);
             $deleteForm->loadData($request->getBody());
             if ($deleteForm->validate()) {
@@ -152,9 +154,31 @@ class DataController extends Controller
         }
 
         if (isset($_GET['id'])) {
+            $query = $request->getQuery(); 
+            $id= $query["id"];
+            $nameRespponse = $deleteForm-> findNameById($id); 
+            if(!empty($nameRespponse)){
+            $name = $nameRespponse[0]["name"]; 
+            } else {
+                $response -> redirect("/manage");
+                return ;
+            }
+            $newDataToLoad = ["name" => $name];
+            $deleteForm->loadData($newDataToLoad);
             $data = $deleteForm->deleteGoodById($_GET['id']);
-            $response->redirect('/delete');
-            return;
+            $data2 = $deleteForm->searchByName();
+            // var_dump($data2); 
+            
+            $params = [
+                'good' => $data2,
+                'model' => $deleteForm,
+                'partner' => $partner,
+                //'searchGoodNum' => $searchGoodNum,
+                'path' => $path,
+                'query' => $query
+            ];
+           return  $this->render('delete' , $params);
+            // $response->redirect('/delete');
         }
 
         $params = [
