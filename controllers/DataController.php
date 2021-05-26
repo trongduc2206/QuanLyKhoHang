@@ -16,9 +16,7 @@ class DataController extends Controller
         $data = $this->paginationData($request, $good->showImportGood());
         $partner = $good->getPartnerList();
         $importGoodNum = $good->getImportGoodNum();
-        // echo '<pre>';
-        // echo var_dump($importGoodNum);
-        // echo '</pre>';
+
         $path = $request->getPath();
         $query = $request->getQuery();
         var_dump($query);

@@ -9,7 +9,7 @@ require_once '../models/User.php';
 $config = [
     'userClass' => User::class,
     'db' => [
-        'dsn' => 'mysql:host=localhost;port=3306;dbname=quan_ly_hang_hoa',
+        'dsn' => 'mysql:host=localhost;port=3306;dbname=cnweb_btl',
         'user' => 'root',
         'password' => ''    
     ]

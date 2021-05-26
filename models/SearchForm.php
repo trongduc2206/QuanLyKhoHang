@@ -21,26 +21,19 @@
 
         public function attributes(): array
         {
-        return ['name'];
+            return ['name','type', 'status', 'description', 'import_date', 'quantity', 'merchant_id', 'partner_id'];
         }
-
-        // public function searchByName($name){
-        //     $sql = "SELECT * FROM good where name regexp '$name';";
-        //     return $this->queryCustom($sql);
-        // }
 
         public function searchByName(){
             $sql = "select good.* , partner.name as partnername from good, partner where 
-            good.name= '$this->name' and good.partner_id=partner.id and merchant_id=
-        " .Application::$app->session->get('user');
+            good.name= '$this->name' and good.partner_id=partner.id and good.merchant_id=" .Application::$app->session->get('user');
             return $this->queryCustom($sql);
         }
         
         public function getAllData()
         {
             $sql = "select good.* , partner.name as partnername from good, partner where 
-            good.partner_id=partner.id and merchant_id=
-        " .Application::$app->session->get('user');
+            good.partner_id=partner.id and good.merchant_id=" .Application::$app->session->get('user');
             return $this->queryCustom($sql);
         }
 
