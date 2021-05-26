@@ -61,15 +61,15 @@ class Good extends DbModel{
     }
 
     public function getGoodNumber(){
-        return $this->getTotalNumber($this->primaryKey());
+        return $this->getTotalNumberWhere($this->primaryKey(),['merchant_id' => Application::$app->session->get('user')]);
     }
 
     public function getImportGoodNum(){
-        return $this->getTotalNumberWhere($this->primaryKey(), ['status'=>'Đã nhập']);
+        return $this->getTotalNumberWhere($this->primaryKey(), ['status'=>'Đã nhập', 'merchant_id' => Application::$app->session->get('user')]);
     }
 
     public function getExportGoodNum(){
-        return $this->getTotalNumberWhere($this->primaryKey(), ['status'=>'Đã xuất']);
+        return $this->getTotalNumberWhere($this->primaryKey(), ['status'=>'Đã xuất', 'merchant_id' => Application::$app->session->get('user')]);
     }
 
     public function getPartnerNum(){

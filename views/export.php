@@ -78,6 +78,7 @@
   <hr class="solid">
   <!-- <?php if ($good) ?> -->
   <div class='table-content'>
+  <?php if($exportGoodNum[0]['COUNT'] != 0) : ?>
     <table border="1" id="good">
       <tbody>
         <tr>
@@ -99,12 +100,19 @@
       }
       ?>
     </table>
+    <?php else : ?>
+      <h1>You have 0 exported good</h1>
+      <h2>If you have an imported good, export a new one here</h2>
+      <a href="/import">Else add a new imported good first</a>
+      <?php endif; ?>
     <div class ="pagination">
           <?php 
+                if($exportGoodNum[0]['COUNT'] != 0){
             $numOfPage = ceil($exportGoodNum[0]['COUNT']/10);
             for($i=1;$i<=$numOfPage;$i++){
                 echo "<a href='".$path."?page=$i'>".$i."</a>";
             }
+          }
           ?>
       </div>
   </div>
