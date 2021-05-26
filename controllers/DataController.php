@@ -148,10 +148,11 @@ class DataController extends Controller
                 ];
                 
                 if(empty($data2)){
-                    $response->redirect('_404');
+                    echo "<script>alert('Can not found good with this name');document.location='/manage' </script>";
                 } else {
                     return $this->render('delete' , $params);
                 }
+                // return $this->render('delete' , $params);
             }
         }
 

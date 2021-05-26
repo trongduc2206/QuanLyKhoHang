@@ -120,7 +120,7 @@
                 echo '<tr><td>' . $good['id'] . '</td><td>' . $good['name'] . '</td><td>' . $good['type'] . '</td><td>' . $good['quantity'] . '</td>
                 <td>' . $good['description'] . '</td><td>' . $good['import_date'] . '</td><td>' . $good['export_date'] . '</td><td>' . $good['partnername'] . '</td><td>' .
                 "<a href='manage?id=" . $good['id'] . "' onclick = 'ConfirmDelete()'>Delete</a>" . '</td></tr>';
-            }
+            } 
         }
             ?>
         </table>
