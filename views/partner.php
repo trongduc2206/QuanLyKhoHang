@@ -37,6 +37,27 @@
   cursor: pointer;
 }
 
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+  border-radius: 5px;
+}
 </style>
 <div class="table">
         <h2>Partner</h2>
@@ -46,11 +67,21 @@
         <table border="1" id="good">
         <tbody><tr><th>ID</th><th>Name</th><th>Status</th><th>Relation</th></tbody>
         <?php
-          foreach($partner as $key=>$partner){
+          $page = $query["page"];
+          $partnerList = $partner[$page];
+          foreach($partnerList as $key=>$partner){
             echo '<tr><td>'.$partner['id'].'</td><td>'.$partner['name'].'</td><td>'.$partner['status'].'</td><td>'.$partner['relation'].'</td></tr>';
           }
         ?>
         </table>
+        <div class ="pagination">
+          <?php 
+            $numOfPage = ceil($partnerNum[0]['COUNT']/10);
+            for($i=1;$i<=$numOfPage;$i++){
+                echo "<a href='".$path."?page=$i'>".$i."</a>";
+            }
+          ?>
+        </div>
         </div>
         
         <button class="button" id="myBtn">ADD PARTNER</button>

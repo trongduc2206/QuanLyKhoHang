@@ -36,7 +36,27 @@
   text-decoration: none;
   cursor: pointer;
 }
+.pagination {
+  display: inline-block;
+}
 
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+  border-radius: 5px;
+}
 </style>
 <div class="table">
         <h2>Import Good</h2>
@@ -46,13 +66,23 @@
         <table border="1" id="good">
         <tbody><tr><th>ID</th><th>Name</th><th>Type</th><th>Quantity</th><th>Description</th><th>Import Date</th><th>Partner Name</th></tbody>
         <?php
-          foreach($good as $key=>$good){
+          $page = $query["page"];
+          $goodList = $good[$page];
+          foreach($goodList as $key=>$good){
             echo '<tr><td>'.$good['id'].'</td><td>'.$good['name'].'</td><td>'.$good['type'].'</td><td>'.$good['quantity'].'</td>
             <td>'.$good['description'].'</td><td>'.$good['import_date'].'</td><td>'.$good['partnername'].'</td></tr>
             ';
           }
         ?>
         </table>
+        <div class ="pagination">
+          <?php 
+            $numOfPage = ceil($importGoodNum[0]['COUNT']/10);
+            for($i=1;$i<=$numOfPage;$i++){
+                echo "<a href='".$path."?page=$i'>".$i."</a>";
+            }
+          ?>
+        </div>
         </div>
         
         <button class="button" id="myBtn">ADD</button>

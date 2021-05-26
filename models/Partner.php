@@ -38,5 +38,9 @@ class Partner extends DbModel {
         $this->status = "Đang hợp tác";
         return parent::save();
     } 
+
+    public function getPartnerNum(){
+        return $this->getTotalNumber($this->primaryKey());
+    }
 }
 ?>

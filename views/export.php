@@ -45,6 +45,28 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+  .pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+  border-radius: 5px;
+}
 </style>
 <div class="table">
   <!-- <?php
@@ -69,13 +91,22 @@
           <th>Partner Name</th>
       </tbody>
       <?php
-      foreach ($good as $key => $good_item) {
-        if ($good_item['status'] == 'Đã xuất')
+      $page = $query["page"];
+      $goodList = $export_good[$page];
+      foreach ($goodList as $key => $good_item) {
           echo '<tr><td>' . $good_item['id'] . '</td><td>' . $good_item['name'] . '</td><td>' . $good_item['type'] . '</td><td>' . $good_item['quantity'] . '</td>
               <td>' . $good_item['description'] . '</td><td>' . $good_item['import_date'] . '</td><td>' . $good_item['export_date'] . '</td><td>' . $good_item['partnername'] . '</td></tr>';
       }
       ?>
     </table>
+    <div class ="pagination">
+          <?php 
+            $numOfPage = ceil($exportGoodNum[0]['COUNT']/10);
+            for($i=1;$i<=$numOfPage;$i++){
+                echo "<a href='".$path."?page=$i'>".$i."</a>";
+            }
+          ?>
+      </div>
   </div>
 
   <button class="button" id="myBtn">Export</button>
@@ -93,10 +124,9 @@
       <label>Good ID</label>
       <select name="id">
         <?php
-        unset($good_item);
-        foreach ($good as $key => $good_item) {
-          if ($good_item['status'] == 'Đã nhập')
-          echo "<option>" . $good_item['id'] . "</option>";
+        //unset($good_item);
+        foreach ($import_good as $key => $good) {
+          echo "<option>" . $good['id'] . "</option>";
           // echo "<option>" . "<b>ID:</b> " . $good_item['id'] . "   |   <b>Name:</b> " . $good_item['name']."   |   <b>Import Date</b>: ". $good_item['import_date']. "</option>";
         }
         ?>

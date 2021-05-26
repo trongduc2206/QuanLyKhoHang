@@ -9,16 +9,22 @@ require_once '../models/Partner.php';
 class DataController extends Controller {
     public function getImportGood(Request $request, Response $response){
         $good = new ImportForm();
-        $data = $good->showImportGood();
+        $data = $this->paginationData($request,$good->showImportGood()); 
         $partner = $good->getPartnerList();
+        $importGoodNum = $good->getImportGoodNum();
+        // echo '<pre>';
+        // echo var_dump($importGoodNum);
+        // echo '</pre>';
+        $path = $request -> getPath();
+        $query = $request -> getQuery(); var_dump($query);
         $invalid = false;
         // var_dump($data);
         
         if($request->isPost()){
-            //var_dump($request->getBody());
+            var_dump($request->getBody());
             $good->loadData($request->getBody());
             if($good->validate() && $good->addImportGood()){
-            $response->redirect("/import");
+            $response->redirect("/import?page=".$query["page"]);
             return ;
             } else {
                 $invalid=true;
@@ -28,10 +34,24 @@ class DataController extends Controller {
             'good' => $data,
             'model' => $good,
             'partner' => $partner,
-            'invalid' => $invalid
+            'invalid' => $invalid,
+            'importGoodNum' => $importGoodNum,
+            'path' => $path,
+            'query' => $query
         ]; 
         return $this->render('import', $params);
-        
+    }
+
+    public function paginationData(Request $request, $data){
+        $query = $request -> getQuery();
+        $pagination = [];
+        $cnt =1 ;
+        foreach($data as $key => $item){
+            $page = ceil($cnt/10);
+            $pagination[$page][$key]= $item;
+            $cnt++;
+        }
+        return $pagination;
     }
 
     public function addImportGood(Request $request, Response $response){
@@ -43,25 +63,35 @@ class DataController extends Controller {
         }
     }
 
-    public function getAllGood(Request $request, Response $response){
-        $good = new ExportForm();
-        $data = $good->showAllGood();
+    public function getExportGood(Request $request, Response $response){
+        $export_good = new ExportForm();
+        $import_good = new ImportForm();
+        //$data = $good->showAllGood();
+        $data = $this->paginationData($request,$export_good->showExportGood()); 
+        $addition_data = $import_good->showImportGood();
+        $exportGoodNum = $export_good->getExportGoodNum();
+        $path = $request -> getPath();
+        $query = $request -> getQuery(); var_dump($query);
         $invalid = false;
         // var_dump($data);
         if($request->isPost()){ 
-            $good->loadData($request->getBody());
+            $export_good->loadData($request->getBody());
             // echo '<pre>';
             // echo var_dump($good);
             // echo '</pre>';  
-            if($good->validate()) {
-                $good->updateExportGood();
+            if($export_good->validate()) {
+                $export_good->updateExportGood();
                 $response->redirect("/export");
                 return;
             } else 
                 $invalid = true;
         } 
         $params = [
-            'good' => $data,
+            'export_good' => $data,
+            'import_good' => $addition_data,
+            'path' => $path,
+            'query' => $query,
+            'exportGoodNum' => $exportGoodNum,
             'invalid' => $invalid
         ]; 
         
@@ -71,8 +101,11 @@ class DataController extends Controller {
 
     public function getPartner(Request $request, Response $response){
         $partner = new Partner();
-        $data = $partner->getAllData();
+        $data = $this->paginationData($request,$partner->getAllData());
         $invalid = false;
+        $partnerNum = $partner->getPartnerNum();
+        $path = $request -> getPath();
+        $query = $request -> getQuery();
         // var_dump($data);
         if($request->isPost()){
             // echo '<pre>';
@@ -93,7 +126,10 @@ class DataController extends Controller {
         $params = [
             'partner' => $data,
             'invalid' => $invalid,
-            'model' => $partner
+            'model' => $partner,
+            'partnerNum' => $partnerNum,
+            'path' => $path,
+            'query' => $query
         ]; 
         
         return $this->render('partner', $params);
