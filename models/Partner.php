@@ -6,7 +6,7 @@ class Partner extends DbModel {
     public string $name='';
     public string $status='';
     public string $relation='';
-
+    public string $merchant_id='';
     public function labels():array{
         return [
             'name' => 'Name'
@@ -31,16 +31,17 @@ class Partner extends DbModel {
 
     public function attributes(): array
     {
-        return ['name', 'status', 'relation'];
+        return ['name', 'status', 'relation', 'merchant_id'];
     }
 
     public function addPartner() {
         $this->status = "Đang hợp tác";
+        $this->merchant_id = Application::$app->session->get('user');
         return parent::save();
     } 
 
     public function getPartnerNum(){
-        return $this->getTotalNumber($this->primaryKey());
+        return $this->getTotalNumberWhere($this->primaryKey(), ['merchant_id' => Application::$app->session->get('user')]);
     }
 }
 ?>
