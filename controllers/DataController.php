@@ -186,7 +186,7 @@ class DataController extends Controller
     public function getPartner(Request $request, Response $response)
     {
         $partner = new Partner();
-        $data = $this->paginationData($request, $partner->getAllData());
+        $data = $this->paginationData($request, $partner->getAllDataOfCurrentUser());
         $invalid = false;
         $partnerNum = $partner->getPartnerNum();
         $path = $request->getPath();
