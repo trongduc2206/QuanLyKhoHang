@@ -7,7 +7,7 @@ abstract class Model {
     public const RULE_MAX='max';
     public const RULE_MATCH='match';
     public const RULE_UNIQUE='unique';
-
+    public const RULE_NUMBER='number';
 
 
     public function loadData($data) {
@@ -32,7 +32,7 @@ abstract class Model {
     public array $errors = [];
 
     public function validate(){
-        foreach($this->rules() as $attribute => $rules){
+        foreach($this->rules() as $attribute => $rules){  
             $value = $this -> {$attribute};
             foreach($rules as $rule){
                 $ruleName = $rule;
@@ -67,8 +67,11 @@ abstract class Model {
                         $this-> addErrorForRule($attribute, self::RULE_UNIQUE, ['field' => $this->getLabel($attribute)]);
                     }
                 }
+                if($ruleName === self::RULE_NUMBER && !is_numeric($value)){
+                    $this-> addErrorForRule($attribute, self::RULE_NUMBER);
+                }
             }
-        }
+        }  
         return empty($this->errors);
     }
 
@@ -91,7 +94,8 @@ abstract class Model {
             self::RULE_MIN => "Min length of this field must be {min}",
             self::RULE_MAX => "Max length of this field must be {max}",
             self::RULE_MATCH => "This field must be the same as {match}",
-            self::RULE_UNIQUE => "Record with this {field} already exist"
+            self::RULE_UNIQUE => "Record with this {field} already exist",
+            self::RULE_NUMBER => "This field must be a number"
         ];
     }
 

@@ -27,7 +27,9 @@ class DataController extends Controller
             // var_dump($request->getBody());
             $good->loadData($request->getBody());
             if ($good->validate() && $good->addImportGood()) {
-                $response->redirect("/import?page=" . $query["page"]);
+                $redirect= $query["page"];
+                echo "<script>alert('Add Success'); document.location='/import?page=$redirect'</script>";
+                // $response->redirect("/import?page=" . $query["page"]);
                 return;
             } else {
                 $invalid = true;
