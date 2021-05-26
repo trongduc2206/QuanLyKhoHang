@@ -36,6 +36,7 @@
   text-decoration: none;
   cursor: pointer;
 }
+
 .pagination {
   display: inline-block;
 }
@@ -59,25 +60,23 @@
 }
 </style>
 <div class="table">
-        <h2>Import Good</h2>
+        <h2>Partner</h2>
         <hr class="solid">
-        <!-- <?php if($good) ?> -->
+        <!-- <?php if($partner) ?> -->
         <div class='table-content'>
         <table border="1" id="good">
-        <tbody><tr><th>ID</th><th>Name</th><th>Type</th><th>Quantity</th><th>Description</th><th>Import Date</th><th>Partner Name</th></tbody>
+        <tbody><tr><th>ID</th><th>Name</th><th>Status</th><th>Relation</th></tbody>
         <?php
           $page = $query["page"];
-          $goodList = $good[$page];
-          foreach($goodList as $key=>$good){
-            echo '<tr><td>'.$good['id'].'</td><td>'.$good['name'].'</td><td>'.$good['type'].'</td><td>'.$good['quantity'].'</td>
-            <td>'.$good['description'].'</td><td>'.$good['import_date'].'</td><td>'.$good['partnername'].'</td></tr>
-            ';
+          $partnerList = $partner[$page];
+          foreach($partnerList as $key=>$partner){
+            echo '<tr><td>'.$partner['id'].'</td><td>'.$partner['name'].'</td><td>'.$partner['status'].'</td><td>'.$partner['relation'].'</td></tr>';
           }
         ?>
         </table>
         <div class ="pagination">
           <?php 
-            $numOfPage = ceil($importGoodNum[0]['COUNT']/10);
+            $numOfPage = ceil($partnerNum[0]['COUNT']/10);
             for($i=1;$i<=$numOfPage;$i++){
                 echo "<a href='".$path."?page=$i'>".$i."</a>";
             }
@@ -85,14 +84,14 @@
         </div>
         </div>
         
-        <button class="button" id="myBtn">ADD</button>
+        <button class="button" id="myBtn">ADD PARTNER</button>
 
         <div id="myModal" class="modal" <?php if($invalid) echo "style='display: block;'" ?> >
 
   <!-- Modal content -->
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Add New Good</h2>
+            <h2>Add New Partner</h2>
 <?php require_once '../core/form/Form.php';
 $form =  Form::begin('',"post") 
 ?>
@@ -100,32 +99,12 @@ $form =  Form::begin('',"post")
     <?php 
         echo $form -> field($model, 'name')
     ?>
-    <?php 
-        echo $form -> field($model, 'type')
-    ?>
-    <!-- <?php 
-        echo $form -> field($model, 'status')
-    ?> -->
-    <?php 
-        echo $form -> field($model, 'description')
-    ?>
-    <!-- <?php 
-        echo $form -> field($model, 'import_date')
-    ?> -->
-    <?php 
-        echo $form -> field($model, 'quantity')
-    ?>
-    <label>Partner</label>
-    <select name="partner_id">
-          <?php
-          foreach($partner as $key=>$partner){
-            echo "<option>".$partner['name'] ."</option>";
-          }
-          ?>
+
+    <label>Relation</label>
+    <select name="relation">
+        <option>Nhập</option>
+        <option>Xuất</option>
     </select>
-    </br>
-    <label>Import Date</label>
-    <input type='date' name='import_date'>
     </br>
     <button type="submit-register">Submit</button>
 

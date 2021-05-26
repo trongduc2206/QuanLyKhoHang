@@ -43,5 +43,17 @@ class Request {
         }
         return $body;
     }
+
+    public function getQuery(){
+        $path= $_SERVER['REQUEST_URI'] ?? '/';
+        $position1 = strpos($path,'?');
+        if($position1 == false){
+            return array("page" => "1");
+        }
+        $position2 = strpos($path,"=");
+        $queryKey = substr($path,$position1+1, $position2-$position1-1);
+        $queryValue = substr($path,$position2+1, strlen($path));
+        return array($queryKey => $queryValue);
+    }
 }
 ?>

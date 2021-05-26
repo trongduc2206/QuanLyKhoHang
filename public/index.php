@@ -9,7 +9,7 @@ require_once '../models/User.php';
 $config = [
     'userClass' => User::class,
     'db' => [
-        'dsn' => 'mysql:host=localhost;port=3306;dbname=cnweb_btl',
+        'dsn' => 'mysql:host=localhost;port=3306;dbname=quan_ly_hang_hoa',
         'user' => 'root',
         'password' => ''    
     ]
@@ -29,10 +29,10 @@ $app->router->get('/delete', [DataController:: class, 'delete']);
 $app->router->post('/delete', [DataController:: class, 'delete']);
 
 $app->router->get('/partner',[DataController::class,'getPartner']);
-
+$app->router->post('/partner',[DataController::class, 'getPartner']);
 
 $app->router->get('/export',  [DataController::class,'getExportGood']);
-
+$app->router->post('/export',  [DataController::class,'getExportGood']);
 
 $app->router->post('/', array(new SiteController(), 'handleHome') );
 
