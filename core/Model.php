@@ -8,6 +8,7 @@ abstract class Model {
     public const RULE_MATCH='match';
     public const RULE_UNIQUE='unique';
     public const RULE_NUMBER='number';
+    public const RULE_EXPORT='export';
 
 
     public function loadData($data) {
@@ -70,6 +71,9 @@ abstract class Model {
                 if($ruleName === self::RULE_NUMBER && !is_numeric($value)){
                     $this-> addErrorForRule($attribute, self::RULE_NUMBER);
                 }
+                if($ruleName === self::RULE_EXPORT && strtotime($value)<strtotime($rule['import'])){
+                    $this-> addErrorForRule($attribute, self::RULE_EXPORT, $rule);
+                }
             }
         }  
         return empty($this->errors);
@@ -95,7 +99,8 @@ abstract class Model {
             self::RULE_MAX => "Max length of this field must be {max}",
             self::RULE_MATCH => "This field must be the same as {match}",
             self::RULE_UNIQUE => "Record with this {field} already exist",
-            self::RULE_NUMBER => "This field must be a number"
+            self::RULE_NUMBER => "This field must be a number",
+            self::RULE_EXPORT => "Export date must be after import date : {import} "
         ];
     }
 

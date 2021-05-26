@@ -10,9 +10,9 @@
         public string $quantity='';
         public string $merchant_id='';
         public string $partner_id='';
-        public function rules():array{
+        public function rules():array{ var_dump($this->getImportDate()); 
             return [
-                'export_date' => [self::RULE_REQUIRED],
+                'export_date' => [self::RULE_REQUIRED,[self::RULE_EXPORT,'import'=>$this->getImportDate()[0]["import_date"]]],
             ];
         }
 
@@ -38,5 +38,10 @@
         public function updateExportGood(){
             // echo "in update func";
             return $this->update();
+        }
+
+        public function getImportDate(){
+            $sql = "select import_date from good where id=$this->id and merchant_id= ".Application::$app->session->get('user');
+            return $this->queryCustom($sql);
         }
     }

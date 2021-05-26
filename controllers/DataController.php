@@ -232,7 +232,8 @@ class DataController extends Controller
             'path' => $path,
             'query' => $query,
             'exportGoodNum' => $exportGoodNum,
-            'invalid' => $invalid
+            'invalid' => $invalid,
+            'model' => $export_good
         ];
 
         return $this->render('export', $params);
