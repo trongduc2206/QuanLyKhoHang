@@ -158,8 +158,11 @@
         ?>
       </select>
       </br>
-      <label>Export Date</label>
-      <input type='date' name='export_date'>
+      <!-- <label>Export Date</label>
+      <input type='date' name='export_date'> -->
+      <?php
+      echo $form->field($model, 'export_date')->dateField();
+      ?>
       </br>
       <button type="submit-register">Submit</button>
 

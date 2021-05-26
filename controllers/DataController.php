@@ -27,7 +27,9 @@ class DataController extends Controller
             // var_dump($request->getBody());
             $good->loadData($request->getBody());
             if ($good->validate() && $good->addImportGood()) {
-                $response->redirect("/import?page=" . $query["page"]);
+                $redirect= $query["page"];
+                echo "<script>alert('Add Success'); document.location='/import?page=$redirect'</script>";
+                // $response->redirect("/import?page=" . $query["page"]);
                 return;
             } else {
                 $invalid = true;
@@ -146,10 +148,11 @@ class DataController extends Controller
                 ];
                 
                 if(empty($data2)){
-                    $response->redirect('_404');
+                    echo "<script>alert('Can not found good with this name');document.location='/manage' </script>";
                 } else {
                     return $this->render('delete' , $params);
                 }
+                // return $this->render('delete' , $params);
             }
         }
 
@@ -177,6 +180,7 @@ class DataController extends Controller
                 'path' => $path,
                 'query' => $query
             ];
+            echo "<script>alert('Delete Success'); </script>";
            return  $this->render('delete' , $params);
             // $response->redirect('/delete');
         }
@@ -216,7 +220,9 @@ class DataController extends Controller
             // echo '</pre>';  
             if ($export_good->validate()) {
                 $export_good->updateExportGood();
-                $response->redirect("/export?page=" . $query["page"]);
+                $redirect= $query["page"];
+                echo "<script>alert('Export Success'); document.location='/export?page=$redirect'</script>";
+                // $response->redirect("/export?page=" . $query["page"]);
                 return;
             } else
                 $invalid = true;
@@ -227,7 +233,8 @@ class DataController extends Controller
             'path' => $path,
             'query' => $query,
             'exportGoodNum' => $exportGoodNum,
-            'invalid' => $invalid
+            'invalid' => $invalid,
+            'model' => $export_good
         ];
 
         return $this->render('export', $params);
@@ -252,7 +259,9 @@ class DataController extends Controller
             // echo '</pre>';  
             if ($partner->validate()) {
                 $partner->addPartner();
-                $response->redirect("/partner");
+                $redirect= $query["page"];
+                echo "<script>alert('Add Success'); document.location='/partner?page=$redirect'</script>";
+                // $response->redirect("/partner");
                 return;
             } else
                 $invalid = true;

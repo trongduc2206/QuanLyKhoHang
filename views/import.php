@@ -175,8 +175,11 @@
         ?>
       </select>
       </br>
-      <label>Import Date</label>
-      <input type='date' name='import_date'>
+      <!-- <label>Import Date</label>
+      <input type='date' name='import_date'> -->
+      <?php
+      echo $form->field($model, 'import_date')->dateField();
+      ?>
       </br>
       <button type="submit-register">Submit</button>
 
