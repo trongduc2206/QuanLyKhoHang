@@ -121,12 +121,11 @@ class DataController extends Controller
         $deleteForm = new SearchForm();
         $data = $deleteForm->getAllData();
         $partner = $deleteForm->getPartnerList();
-        $deleteGoodNum = $deleteForm->getGoodNumber();
+        //$deleteGoodNum = $deleteForm->getGoodNumber();
         $path = $request->getPath();
         $query = $request->getQuery();
         
         $data2 = [];
-        // var_dump($request->isPost());
         if ($request->isPost()) {
             //var_dump($request->getBody());
             // var_dump($data);
@@ -162,7 +161,7 @@ class DataController extends Controller
             'good' => $data,
             'model' => $deleteForm,
             'partner' => $partner,
-            'deleteGoodNum' => $deleteGoodNum,
+            //'deleteGoodNum' => $deleteGoodNum,
             'path' => $path,
             'query' => $query
         ];

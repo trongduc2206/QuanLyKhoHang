@@ -82,14 +82,6 @@
 <div class="table">
     <h2>Search Good</h2>
     <hr class="solid">
-    <!-- <form action="" method="post">
-        <table>
-            <tr>
-                <td><input type="text" name="name" placeholder="Nhập tên sản phẩm"></td>
-                <td><button type="submit-register">Submit</button></td>
-            </tr>
-        </table>
-    </form> -->
     <?php require_once '../core/form/Form.php';
     $form =  Form::begin('', "post")
     ?>
@@ -123,8 +115,8 @@
             <?php
             foreach ($good as $key => $good) {
                 echo '<tr><td>' . $good['id'] . '</td><td>' . $good['name'] . '</td><td>' . $good['type'] . '</td><td>' . $good['quantity'] . '</td>
-            <td>' . $good['description'] . '</td><td>' . $good['import_date'] . '</td><td>' . $good['export_date'] . '</td><td>' . $good['partnername'] . '</td><td>' .
-                    "<a href='delete?id=" . $good['id'] . "' onclick = 'ConfirmDelete()'>Delete</a>" . '</td></tr>';
+                <td>' . $good['description'] . '</td><td>' . $good['import_date'] . '</td><td>' . $good['export_date'] . '</td><td>' . $good['partnername'] . '</td><td>' .
+                "<a href='delete?id=" . $good['id'] . "' onclick = 'ConfirmDelete()'>Delete</a>" . '</td></tr>';
             }
             ?>
         </table>
