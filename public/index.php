@@ -25,8 +25,8 @@ $app->router->put('/import', [DataController::class,'getImportGood']);
 
 $app->router->get('/search', [DataController::class, 'search']);
 $app->router->post('/search', [DataController::class, 'search']);
-$app->router->get('/delete', [DataController:: class, 'delete']);
-$app->router->post('/delete', [DataController:: class, 'delete']);
+$app->router->get('/manage', [DataController:: class, 'delete']);
+$app->router->post('/manage', [DataController:: class, 'delete']);
 
 $app->router->get('/partner',[DataController::class,'getPartner']);
 $app->router->post('/partner',[DataController::class, 'getPartner']);

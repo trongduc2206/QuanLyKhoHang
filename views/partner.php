@@ -64,6 +64,8 @@
         <hr class="solid">
         <!-- <?php if($partner) ?> -->
         <div class='table-content'>
+        <?php if($partnerNum[0]['COUNT'] != 0) : ?>
+
         <table border="1" id="good">
         <tbody><tr><th>ID</th><th>Name</th><th>Status</th><th>Relation</th></tbody>
         <?php
@@ -74,12 +76,19 @@
           }
         ?>
         </table>
+        <?php else : ?>
+        <h1>You have 0 partner</h1>
+        <h2>Add a new partner here</h2>
+          <?php endif; ?>
+
         <div class ="pagination">
           <?php 
+            if($partnerNum[0]['COUNT']!=0){
             $numOfPage = ceil($partnerNum[0]['COUNT']/10);
             for($i=1;$i<=$numOfPage;$i++){
                 echo "<a href='".$path."?page=$i'>".$i."</a>";
             }
+          }
           ?>
         </div>
         </div>

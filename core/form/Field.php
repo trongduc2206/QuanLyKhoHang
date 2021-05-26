@@ -22,10 +22,17 @@ class Field {
     public function __toString()
     {
         return sprintf('
+        <style>
+            p{
+                color :red;
+                margin:0;
+                font-size:14px;
+            }
+         </style>
         <label>%s</label>
         <input type = "%s" name = "%s" value="%s" class="form-control%s">
-        <div class="invalid-feedback">
-            %s
+        <div class="invalid-feedback" >
+            <p >%s</p>  
          </div>
         ',$this->model->getLabel($this->attribute),
         $this->type,

@@ -340,6 +340,25 @@ section
 	animation: rotate 30s linear infinite, fadeIn 1s linear forwards;
 	animation-delay: 7s;
 }
+.alert {
+  padding: 20px;
+  background-color: green;
+  color: white;
+}
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
 @keyframes rotate
 {
 	0%
@@ -364,6 +383,14 @@ section
 			<div class="layer"></div>
 			<div class="layer"></div>
 		</div> -->
+		<?php
+  if(Application::$app->session->getFlash('success')) :  
+?>
+<div class = "alert">
+<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+<?php echo "<strong>Success!</strong>".Application::$app->session->getFlash('success') ?>
+</div>
+<?php endif; ?>
 		<section>
 			<div class="header">
 				<img src="logo.jpg" class="logo" width alt=“ảnhlogo” ”>

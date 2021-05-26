@@ -19,12 +19,12 @@ class DataController extends Controller
 
         $path = $request->getPath();
         $query = $request->getQuery();
-        var_dump($query);
+        // var_dump($query);
         $invalid = false;
         // var_dump($data);
 
         if ($request->isPost()) {
-            var_dump($request->getBody());
+            // var_dump($request->getBody());
             $good->loadData($request->getBody());
             if ($good->validate() && $good->addImportGood()) {
                 $response->redirect("/import?page=" . $query["page"]);
@@ -71,9 +71,9 @@ class DataController extends Controller
     public function search(Request $request, Response $response)
     {
         $searchForm = new SearchForm();
-        $data = $this->paginationData($request, $searchForm->getAllData());
+        //$data = $this->paginationData($request, $searchForm->getAllData());
         $partner = $searchForm->getPartnerList();
-        $searchGoodNum = $searchForm->getGoodNumber();
+        //$searchGoodNum = $searchForm->getGoodNumber();
         $path = $request->getPath();
         $query = $request->getQuery();
         $data2 = [];
@@ -84,25 +84,30 @@ class DataController extends Controller
             $searchForm->loadData($request->getBody());
             if ($searchForm->validate()) {
                 $data2 = $this->paginationData($request, $searchForm->searchByName());
+                $query = $request->getQuery();
                 // var_dump($data2);
                 $params = [
                     'search' => $data2,
                     'model' => $searchForm,
-                    'searchGoodNum' => $searchGoodNum,
+                    //'searchGoodNum' => $searchGoodNum,
                     'path' => $path,
                     'query' => $query
                 ];
-                // $response->redirect('/search');
-                return $this->render('search', $params);;
+                
+                if(empty($data2)){
+                    $response->redirect('_404');
+                } else {
+                    return $this->render('search', $params);
+                }
             }
         }
 
         $params = [
-            'good' => $data,
+            //'good' => $data,
             'model' => $searchForm,
             'partner' => $partner,
             'search' => $data2,
-            'searchGoodNum' => $searchGoodNum,
+            //'searchGoodNum' => $searchGoodNum,
             'path' => $path,
             'query' => $query
         ];
@@ -114,23 +119,73 @@ class DataController extends Controller
     public function delete(Request $request, Response $response)
     {
         $deleteForm = new SearchForm();
-        $data = $this->paginationData($request, $deleteForm->getAllData());
+        $data = [];
+        // $data = $deleteForm->getAllData();
         $partner = $deleteForm->getPartnerList();
-        $deleteGoodNum = $deleteForm->getGoodNumber();
+        //$deleteGoodNum = $deleteForm->getGoodNumber();
         $path = $request->getPath();
         $query = $request->getQuery();
+        $data2 = [];
+        $searchQuery ='';
+        if ($request->isPost()) {
+            // var_dump($request->getBody()); exit; 
+            $searchQuery = $request->getBody();
+            // var_dump($data);
+            $deleteForm->loadData($request->getBody());
+            if ($deleteForm->validate()) {
+                $data2 = $deleteForm->searchByName();
+                $query = $request->getQuery();
+                // var_dump($data2);
+                $params = [
+                    'good' => $data2,
+                    'model' => $deleteForm,
+                    'partner' => $partner,
+                    //'searchGoodNum' => $searchGoodNum,
+                    'path' => $path,
+                    'query' => $query
+                ];
+                
+                if(empty($data2)){
+                    $response->redirect('_404');
+                } else {
+                    return $this->render('delete' , $params);
+                }
+            }
+        }
 
         if (isset($_GET['id'])) {
-            $data = $this->paginationData($request,$deleteForm->deleteGoodById($_GET['id']));
-            $response->redirect('/delete?page=1');
-            return ;
+            $query = $request->getQuery(); 
+            $id= $query["id"];
+            $nameRespponse = $deleteForm-> findNameById($id); 
+            if(!empty($nameRespponse)){
+            $name = $nameRespponse[0]["name"]; 
+            } else {
+                $response -> redirect("/manage");
+                return ;
+            }
+            $newDataToLoad = ["name" => $name];
+            $deleteForm->loadData($newDataToLoad);
+            $data = $deleteForm->deleteGoodById($_GET['id']);
+            $data2 = $deleteForm->searchByName();
+            // var_dump($data2); 
+            
+            $params = [
+                'good' => $data2,
+                'model' => $deleteForm,
+                'partner' => $partner,
+                //'searchGoodNum' => $searchGoodNum,
+                'path' => $path,
+                'query' => $query
+            ];
+           return  $this->render('delete' , $params);
+            // $response->redirect('/delete');
         }
 
         $params = [
             'good' => $data,
             'model' => $deleteForm,
             'partner' => $partner,
-            'deleteGoodNum' => $deleteGoodNum,
+            //'deleteGoodNum' => $deleteGoodNum,
             'path' => $path,
             'query' => $query
         ];
@@ -151,7 +206,7 @@ class DataController extends Controller
         $exportGoodNum = $export_good->getExportGoodNum();
         $path = $request->getPath();
         $query = $request->getQuery();
-        var_dump($query);
+        // var_dump($query);
         $invalid = false;
         // var_dump($data);
         if ($request->isPost()) {

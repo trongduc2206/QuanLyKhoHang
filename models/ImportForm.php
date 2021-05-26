@@ -15,7 +15,9 @@
                 'type' => [self::RULE_REQUIRED],
                 'import_date' => [self::RULE_REQUIRED],
                 'description' => [self::RULE_REQUIRED],
-                'quantity' => [self::RULE_REQUIRED]
+                'quantity' => [self::RULE_REQUIRED],
+                'partner_id' => [self::RULE_REQUIRED],
+                'import_date' => [self::RULE_REQUIRED],
             ];
         }
 

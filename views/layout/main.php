@@ -244,9 +244,11 @@ hr.solid {
   <a href="/import">Import</a>
   <a href="/export">Export</a>
   <a href="/partner">Partner</a>
+  <a href="/manage">Manage</a>
+
   <!-- <a href="/search">Search</a>
   <a href="/delete">Delete</a> -->
-  <div class="dropdown">
+  <!-- <div class="dropdown">
     <button class="dropbtn">Manage
       <i class="fa fa-caret-down"></i>
     </button>
@@ -254,7 +256,7 @@ hr.solid {
       <a href="/search">Search</a>
       <a href="/delete">Delete</a>
     </div>
-  </div>
+  </div> -->
   <?php  endif; ?>
   <?php if(Application::isGuest()): ?>
   <a href="/login" style="float:right">Login</a>

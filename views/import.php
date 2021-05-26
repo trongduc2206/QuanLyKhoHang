@@ -77,6 +77,7 @@
   <hr class="solid">
   <!-- <?php if ($good) ?> -->
   <div class='table-content'>
+  <?php if($importGoodNum[0]['COUNT'] != 0) : ?>
     <table border="1" id="good">
       <tbody>
         <tr>
@@ -89,6 +90,7 @@
           <th>Partner Name</th>
       </tbody>
       <?php
+      if($importGoodNum[0]['COUNT'] != 0){
       $page = $query["page"];
       $goodList = $good[$page];
       foreach ($goodList as $key => $good) {
@@ -96,13 +98,22 @@
             <td>' . $good['description'] . '</td><td>' . $good['import_date'] . '</td><td>' . $good['partnername'] . '</td></tr>
             ';
       }
+    } 
       ?>
     </table>
+    <?php else : ?>
+    <h1>You have 0 imported good</h1>
+    <h2>If you have a partner, add a new good here</h2>
+    <a href="/partner">Else add a new partner first</a>
+    <?php endif; ?>
     <div class="pagination">
       <?php
+      // var_dump($importGoodNum);
+      if($importGoodNum[0]['COUNT'] != 0){
       $numOfPage = ceil($importGoodNum[0]['COUNT'] / 10);
       for ($i = 1; $i <= $numOfPage; $i++) {
         echo "<a href='" . $path . "?page=$i'>" . $i . "</a>";
+      }
       }
       ?>
     </div>
