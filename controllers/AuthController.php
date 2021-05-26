@@ -10,7 +10,6 @@ class AuthController extends Controller{
         if($request->isPost()){
             $loginForm->loadData($request->getBody());
             if($loginForm->validate()&& $loginForm->login()){
-                echo '<script>alert("Login successfully")</script>';
                 $response->redirect('/');
                 return ;
             }
@@ -31,14 +30,13 @@ class AuthController extends Controller{
 
             if($registerModel->validate() && $registerModel->register()){
                 Application::$app->session->setFlash('success', 'Thanks for registering');
-                echo '<script>alert("Thanks for registering")</script>';
                 Application::$app->response->redirect('/');
                 exit;
             }
-            var_dump($registerModel->errors);
-            return $this->render('register',[
-                'model' => $registerModel
-            ]);
+            // var_dump($registerModel->errors);
+            // return $this->render('register',[
+            //     'model' => $registerModel
+            // ]);
         }
         $this->setLayout('auth');
         return $this -> render('register',[
