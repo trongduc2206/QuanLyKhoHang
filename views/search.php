@@ -106,7 +106,7 @@
         </tbody>
         <?php
         if (empty($search)) {
-            $goodNum = $searchGoodNum;
+            $goodNum = $searchGoodNum[0]['COUNT'];
             $page = $query["page"];
             $goodList = $good[$page];
             foreach ($goodList as $key => $good) {
@@ -117,10 +117,10 @@
             // echo "<h1>No Data</h1>";
         } else {
             $page = $query["page"];
-            $searchList = $search[$page];
-            $goodNum[0]["COUNT"] = 1;
+            $searchList = $search['1'];
+            $goodNum = 1;
             foreach ($searchList as $key => $good) {
-                $goodNum[0]['COUNT']++;
+                $goodNum++;
                 echo '<tr><td>' . $good['id'] . '</td><td>' . $good['name'] . '</td><td>' . $good['type'] . '</td><td>' . $good['quantity'] . '</td>
                 <td>' . $good['description'] . '</td><td>' . $good['import_date'] . '</td><td>' . $good['export_date'] . '</td><td>' . $good['partnername'] . '</td></tr>
                 ';
@@ -130,7 +130,7 @@
     </table>
     <div class="pagination">
         <?php
-        $numOfPage = ceil($goodNum[0]['COUNT'] / 10);
+        $numOfPage = ceil($goodNum / 10);
         for ($i = 1; $i <= $numOfPage; $i++) {
             echo "<a href='" . $path . "?page=$i'>" . $i . "</a>";
         }

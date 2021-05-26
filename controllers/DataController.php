@@ -84,6 +84,7 @@ class DataController extends Controller
             $searchForm->loadData($request->getBody());
             if ($searchForm->validate()) {
                 $data2 = $this->paginationData($request, $searchForm->searchByName());
+                $query = $request->getQuery();
                 // var_dump($data2);
                 $params = [
                     'search' => $data2,
@@ -92,8 +93,12 @@ class DataController extends Controller
                     'path' => $path,
                     'query' => $query
                 ];
-                // $response->redirect('/search');
-                return $this->render('search', $params);;
+                
+                if(empty($data2)){
+                    $response->redirect('_404');
+                } else {
+                    return $this->render('search', $params);
+                }
             }
         }
 
@@ -122,7 +127,7 @@ class DataController extends Controller
 
         if (isset($_GET['id'])) {
             $data = $this->paginationData($request,$deleteForm->deleteGoodById($_GET['id']));
-            $response->redirect('/delete?page=1');
+            $response->redirect('/delete?page=' . $query["page"]);
             return ;
         }
 
