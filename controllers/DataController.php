@@ -179,6 +179,7 @@ class DataController extends Controller
                 'path' => $path,
                 'query' => $query
             ];
+            echo "<script>alert('Delete Success'); </script>";
            return  $this->render('delete' , $params);
             // $response->redirect('/delete');
         }
@@ -218,7 +219,9 @@ class DataController extends Controller
             // echo '</pre>';  
             if ($export_good->validate()) {
                 $export_good->updateExportGood();
-                $response->redirect("/export?page=" . $query["page"]);
+                $redirect= $query["page"];
+                echo "<script>alert('Export Success'); document.location='/export?page=$redirect'</script>";
+                // $response->redirect("/export?page=" . $query["page"]);
                 return;
             } else
                 $invalid = true;
@@ -254,7 +257,9 @@ class DataController extends Controller
             // echo '</pre>';  
             if ($partner->validate()) {
                 $partner->addPartner();
-                $response->redirect("/partner");
+                $redirect= $query["page"];
+                echo "<script>alert('Add Success'); document.location='/partner?page=$redirect'</script>";
+                // $response->redirect("/partner");
                 return;
             } else
                 $invalid = true;
