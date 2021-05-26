@@ -19,12 +19,12 @@ class DataController extends Controller
 
         $path = $request->getPath();
         $query = $request->getQuery();
-        var_dump($query);
+        // var_dump($query);
         $invalid = false;
         // var_dump($data);
 
         if ($request->isPost()) {
-            var_dump($request->getBody());
+            // var_dump($request->getBody());
             $good->loadData($request->getBody());
             if ($good->validate() && $good->addImportGood()) {
                 $response->redirect("/import?page=" . $query["page"]);
@@ -151,7 +151,7 @@ class DataController extends Controller
         $exportGoodNum = $export_good->getExportGoodNum();
         $path = $request->getPath();
         $query = $request->getQuery();
-        var_dump($query);
+        // var_dump($query);
         $invalid = false;
         // var_dump($data);
         if ($request->isPost()) {
