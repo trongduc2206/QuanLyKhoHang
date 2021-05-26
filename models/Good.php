@@ -56,7 +56,7 @@ class Good extends DbModel{
         return $this->queryCustom($sql);
     }
     public function getPartnerList(){
-        $sql= "select distinct partner.* from partner, good where good.partner_id=partner.id and good.merchant_id=". Application::$app->session->get('user');
+        $sql= "select * from partner where merchant_id=". Application::$app->session->get('user');
         return $this->queryCustom($sql);
     }
 
@@ -80,6 +80,8 @@ class Good extends DbModel{
         }
         return $partnerNum;
     }
+
+    
 
  }
 ?>
