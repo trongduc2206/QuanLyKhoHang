@@ -105,17 +105,9 @@
                 <th>Partner Name</th>
         </tbody>
         <?php
-        if (empty($search)) {
-            $goodNum = $searchGoodNum[0]['COUNT'];
-            $page = $query["page"];
-            $goodList = $good[$page];
-            foreach ($goodList as $key => $good) {
-                echo '<tr><td>' . $good['id'] . '</td><td>' . $good['name'] . '</td><td>' . $good['type'] . '</td><td>' . $good['quantity'] . '</td>
-            <td>' . $good['description'] . '</td><td>' . $good['import_date'] . '</td><td>' . $good['export_date'] . '</td><td>' . $good['partnername'] . '</td></tr>
-            ';
-            }
-            // echo "<h1>No Data</h1>";
-        } else {
+        $goodNum = 0;
+        if (!empty($search)) {
+            
             $page = $query["page"];
             $searchList = $search['1'];
             $goodNum = 1;

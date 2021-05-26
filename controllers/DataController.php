@@ -71,9 +71,9 @@ class DataController extends Controller
     public function search(Request $request, Response $response)
     {
         $searchForm = new SearchForm();
-        $data = $this->paginationData($request, $searchForm->getAllData());
+        //$data = $this->paginationData($request, $searchForm->getAllData());
         $partner = $searchForm->getPartnerList();
-        $searchGoodNum = $searchForm->getGoodNumber();
+        //$searchGoodNum = $searchForm->getGoodNumber();
         $path = $request->getPath();
         $query = $request->getQuery();
         $data2 = [];
@@ -89,7 +89,7 @@ class DataController extends Controller
                 $params = [
                     'search' => $data2,
                     'model' => $searchForm,
-                    'searchGoodNum' => $searchGoodNum,
+                    //'searchGoodNum' => $searchGoodNum,
                     'path' => $path,
                     'query' => $query
                 ];
@@ -103,11 +103,11 @@ class DataController extends Controller
         }
 
         $params = [
-            'good' => $data,
+            //'good' => $data,
             'model' => $searchForm,
             'partner' => $partner,
             'search' => $data2,
-            'searchGoodNum' => $searchGoodNum,
+            //'searchGoodNum' => $searchGoodNum,
             'path' => $path,
             'query' => $query
         ];
@@ -119,16 +119,43 @@ class DataController extends Controller
     public function delete(Request $request, Response $response)
     {
         $deleteForm = new SearchForm();
-        $data = $this->paginationData($request, $deleteForm->getAllData());
+        $data = $deleteForm->getAllData();
         $partner = $deleteForm->getPartnerList();
         $deleteGoodNum = $deleteForm->getGoodNumber();
         $path = $request->getPath();
         $query = $request->getQuery();
+        
+        $data2 = [];
+        // var_dump($request->isPost());
+        if ($request->isPost()) {
+            //var_dump($request->getBody());
+            // var_dump($data);
+            $deleteForm->loadData($request->getBody());
+            if ($deleteForm->validate()) {
+                $data2 = $deleteForm->searchByName();
+                $query = $request->getQuery();
+                // var_dump($data2);
+                $params = [
+                    'good' => $data2,
+                    'model' => $deleteForm,
+                    'partner' => $partner,
+                    //'searchGoodNum' => $searchGoodNum,
+                    'path' => $path,
+                    'query' => $query
+                ];
+                
+                if(empty($data2)){
+                    $response->redirect('_404');
+                } else {
+                    return $this->render('delete' , $params);
+                }
+            }
+        }
 
         if (isset($_GET['id'])) {
-            $data = $this->paginationData($request,$deleteForm->deleteGoodById($_GET['id']));
-            $response->redirect('/delete?page=' . $query["page"]);
-            return ;
+            $data = $deleteForm->deleteGoodById($_GET['id']);
+            $response->redirect('/delete');
+            return;
         }
 
         $params = [
