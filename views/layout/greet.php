@@ -351,7 +351,13 @@ section
 		transform: rotate(405deg);
 	}
 }
-        </style>
+.header .logo{
+	width: 256px;
+	height: 128px;
+	margin-top : 50px ;
+}
+
+    </style>
 	</head>
 	<body>
 		<!-- <div class="open">
@@ -360,7 +366,7 @@ section
 		</div> -->
 		<section>
 			<div class="header">
-				<h2 class="logo">Your Logo</h2>
+				<img src="logo.jpg" class="logo" width alt=“ảnhlogo” ”>
 				<ul>
 					<!-- <li>
 						<a href="#" class="active">Home</a>

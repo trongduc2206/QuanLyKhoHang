@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="./font/themify-icons/themify-icons.css">
 <style>
 * {
   box-sizing: border-box;
@@ -100,12 +101,34 @@ input[type=text], input[type=password] {
 .footer {
   padding: 20px;
   text-align: center;
-  background: #ddd;
-  margin-top: 20px;
+  background: #fff;
+  margin-top: 0px;
   /* position: fixed;
   left: 0;
   bottom: 0;
   width: 100%; */
+}
+
+.footer .footer-class{
+  font-size = 24px ;
+}
+
+.footer .footer-class a{
+  color: rgba(0,0,0,0.6);
+  text-decoration : none ;
+}
+
+.footer .footer-class a:hover{
+  color: rgba(0,0,0,0.4);  
+}
+
+.footer .copyright{
+  margin-top : 15px ;
+  color: rgba(0,0,0,0.6);
+}
+
+.footer .copyright a{
+  color: rgba(0,0,0,0.6);
 }
 
 .table, .search {
@@ -280,7 +303,15 @@ hr.solid {
 </div>
 
 <div class="footer">
-  <h2>Footer</h2>
+  <div class="footer-class">
+    <a href="https://www.facebook.com/HuanHoaHongFan"><i class="ti-facebook"></i></a>
+    <a href="#"><i class="ti-instagram"></i></a>
+    <a href="#"><i class="ti-pinterest"></i></a>
+    <a href="https://www.youtube.com/channel/UCxlKh-abx5QM-zfp38_cLzQ"><i class="ti-youtube"></i></a>
+    <a href="#"><i class="ti-twitter"></i></a>
+    <a href="#"><i class="ti-linkedin"></i></a>
+  </div>
+  <p class="copyright">Power by <a href="#">w3.css</a></p>
 </div>
 
 </body>

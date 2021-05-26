@@ -48,19 +48,23 @@
 
   .pagination {
     display: inline-block;
+    width: 100%;
   }
 
   .pagination a {
-    color: black;
-    float: left;
+    color: #000;
+    float: right;
     padding: 8px 16px;
     text-decoration: none;
+    border-style: groove ;
+    border-width: 1px;
+    background-color: #b7ae89 ;
   }
 
   .pagination a.active {
     background-color: #4CAF50;
     color: white;
-    border-radius: 5px;
+    border-radius: 10px;
   }
 
   .pagination a:hover:not(.active) {
