@@ -43,6 +43,14 @@ abstract class DbModel extends Model{
 
     }
 
+    public function getAllDataOfCurrentUser(){
+        $tableName = $this-> tableName();
+        $sql = "SELECT * FROM $tableName where merchant_id=" . Application::$app->session->get('user');
+        $statement = self::prepare($sql);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+
     public function findMany($where){
         $tableName = $this->tableName();
         $attributes = array_keys($where);
