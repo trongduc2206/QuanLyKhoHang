@@ -22,19 +22,25 @@
         background-image: 
           conic-gradient(red, yellow, green);
     }
-    .table{
-    margin-top : 50px ;
+  .table{
+    margin-top : 10px ;
     height: 300px;
     background: #f4eded ;
     }
-    .table h1{
+  .table h1{
     font-family : serif ;
     color : #ff0000 ;
+    width: 100%;
+    font-size:30px;
+    margin-top : 50px ;
   }
 
   .table h2{
     color : #0909f2 ;
+    width: 100%;
+    font-size:40px;
   }
+  
 </style>
 
 
@@ -49,6 +55,7 @@
 
 
 </div>
+<div class="clear"></div>
 <div class="table">
         <!-- <div class="pie" data-start="0" data-value="30"></div>
 <div class="pie highlight" data-start="30" data-value="30"></div>

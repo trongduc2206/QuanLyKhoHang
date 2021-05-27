@@ -29,7 +29,7 @@ $form =  Form::begin('',"post")
  Form::end() ?>
 </div>
 <div class="column right">
-<img src="login.jpg" class="image">
+<img src="login.jpg" class="image" width=100%>
 </div>
 </div>
 <!-- <form action='' method='POST'>

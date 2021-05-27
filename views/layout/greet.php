@@ -371,9 +371,9 @@ section
 	}
 }
 .header .logo{
-	width: 256px;
-	height: 128px;
-	margin-top : 50px ;
+	width: 180px;
+	height: 180px;
+	margin-top : 100px ;
 }
 
     </style>

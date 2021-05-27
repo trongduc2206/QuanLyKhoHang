@@ -236,7 +236,7 @@ hr.solid {
 @media screen and (max-width: 400px) {
   .topnav a {
     float: none;
-    width: 100%;
+    width: 50%;
   }
 }
   html {

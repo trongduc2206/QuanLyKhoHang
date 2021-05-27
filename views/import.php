@@ -77,15 +77,17 @@
     border-radius: 5px;
   }
   .table{
-    margin-top : 50px ;
+    margin-top : 10px ;
   }
   .table h1{
     font-family : serif ;
     color : #ff0000 ;
+    font-size: 30px;
   }
 
   .table h2{
     color : #0909f2 ;
+    font-size: 40px;
   }
 </style>
 </head>
