@@ -5,7 +5,7 @@
       <input type="submit" value="submit">
       </form>
 </div> -->
-
+<link rel="stylesheet" href="style.css">
 <style>
 
     .box
@@ -22,7 +22,7 @@
         background-image: 
           conic-gradient(red, yellow, green);
     }
-  .table{
+  /* .table{
     margin-top : 10px ;
     height: 300px;
     background: #f4eded ;
@@ -39,7 +39,7 @@
     color : #0909f2 ;
     width: 100%;
     font-size:40px;
-  }
+  } */
   
 </style>
 

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="style.css">
 <style>
     .modal {
         display: none;
@@ -46,11 +47,11 @@
         cursor: pointer;
     }
 
-    .pagination {
+    /* .pagination {
         display: inline-block;
-    }
+    } */
 
-    .pagination a {
+    /* .pagination a {
         color: black;
         float: left;
         padding: 8px 16px;
@@ -82,7 +83,7 @@
   .table h2{
     color : #0909f2 ;
     font-size:40px;
-  }
+  } */
 </style>
 
 <script type="text/javascript">

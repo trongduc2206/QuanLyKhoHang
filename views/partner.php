@@ -59,7 +59,7 @@
   background-color: #ddd;
   border-radius: 5px;
 } */
-.table{
+/* .table{
     margin-top : 10px ;
     height: 300px;
     }
@@ -74,7 +74,7 @@
     color : #0909f2 ;
     width: 100%;
     font-size:40px;
-  }
+  } */
 </style>
 <div class="table">
         <h2>Partner</h2>

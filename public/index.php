@@ -11,7 +11,7 @@ $config = [
     'db' => [
         'dsn' => 'mysql:host=localhost;port=3306;dbname=cnweb_btl',
         'user' => 'root',
-        'password' => 'trongduc22062000'    
+        'password' => ''    
     ]
 ];
 

@@ -6,6 +6,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="./font/themify-icons/themify-icons.css">
+<link rel="stylesheet" href="style.css">
 <style>
 * {
   box-sizing: border-box;
@@ -52,7 +53,7 @@ input[type=text], input[type=password] {
 .topnav a {
   float: left;
   display: block;
-  color: #f4f449;
+  color: #ccc;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;

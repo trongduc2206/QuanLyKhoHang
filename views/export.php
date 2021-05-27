@@ -1,4 +1,4 @@
-<!-- <link rel="stylesheet" href="style.css"> -->
+<link rel="stylesheet" href="style.css">
 <style>
   .modal {
     display: none;
@@ -46,7 +46,7 @@
     text-decoration: none;
     cursor: pointer;
   }
-  .pagination {
+  /* .pagination {
     display: inline-block;
     width: 100%;
   }
@@ -72,8 +72,8 @@
   .pagination a:hover:not(.active) {
     background-color: #ddd;
     border-radius: 5px;
-  }
-  .table{
+  } */
+  /* .table{
     margin-top : 10px ;
 
   }
@@ -86,7 +86,7 @@
   .table h2{
     color : #0909f2 ;
     font-size:40px;
-  }
+  } */
 </style>
 <div class="table">
   <!-- <?php
