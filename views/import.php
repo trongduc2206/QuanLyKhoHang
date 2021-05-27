@@ -50,7 +50,7 @@
     cursor: pointer;
   }
 
-  .pagination {
+  /* .pagination {
     display: inline-block;
     width: 100%;
   }
@@ -75,7 +75,7 @@
   .pagination a:hover:not(.active) {
     background-color: #ddd;
     border-radius: 5px;
-  }
+  } */
   .table{
     margin-top : 10px ;
   }

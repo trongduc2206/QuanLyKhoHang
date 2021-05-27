@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="style.css">
 <style>
     .modal {
   display: none; /* Hidden by default */
@@ -37,7 +38,7 @@
   cursor: pointer;
 }
 
-.pagination {
+/* .pagination {
   display: inline-block;
 }
 
@@ -57,7 +58,7 @@
 .pagination a:hover:not(.active) {
   background-color: #ddd;
   border-radius: 5px;
-}
+} */
 .table{
     margin-top : 10px ;
     height: 300px;
