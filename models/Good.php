@@ -60,6 +60,11 @@ class Good extends DbModel{
         return $this->queryCustom($sql);
     }
 
+    public function getImportPartnerList(){
+        $sql= "select * from partner where merchant_id=". Application::$app->session->get('user')." and relation='Nhập' ";
+        return $this->queryCustom($sql);
+    }
+
     public function getGoodNumber(){
         return $this->getTotalNumberWhere($this->primaryKey(),['merchant_id' => Application::$app->session->get('user')]);
     }
@@ -83,6 +88,25 @@ class Good extends DbModel{
     public function findNameById($id){
         $sql = "select name from good where id = $id";
         return $this->queryCustom($sql);
+    }
+    public function getImportPartnerNum(){
+        $partners = $this->getPartnerList();
+        $partnerNum =0;
+        foreach($partners as $key=>$partner){
+            if($partner['relation'] === "Nhập")
+            $partnerNum++;
+        }
+        return $partnerNum;
+    }
+
+    public function getExportPartnerNum(){
+        $partners = $this->getPartnerList();
+        $partnerNum =0;
+        foreach($partners as $key=>$partner){
+            if($partner['relation'] === "Xuất")
+            $partnerNum++;
+        }
+        return $partnerNum;
     }
 
     

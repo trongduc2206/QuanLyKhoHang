@@ -14,7 +14,7 @@ class DataController extends Controller
     {
         $good = new ImportForm();
         $data = $this->paginationData($request, $good->showImportGood());
-        $partner = $good->getPartnerList();
+        $partner = $good->getImportPartnerList();
         $importGoodNum = $good->getImportGoodNum();
 
         $path = $request->getPath();

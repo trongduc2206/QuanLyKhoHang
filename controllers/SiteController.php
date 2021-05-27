@@ -14,13 +14,17 @@ require_once '../models/Good.php';
             $numOfImport = $good ->getImportGoodNum();
             $numOfExport = $good -> getExportGoodNum();
             $numOfPartner = $good -> getPartnerNum();
+            $numOfImportPartner = $good -> getImportPartnerNum();
+            $numOfExportPartner = $good -> getExportPartnerNum();
             // var_dump($data);
             $params = [
                 'good' => $data,
                 'numOfGood' => $numOfGood,
                 'numOfImport' => $numOfImport,
                 'numOfExport' => $numOfExport,
-                'numOfPartner' => $numOfPartner
+                'numOfPartner' => $numOfPartner,
+                'numOfImportPartner' => $numOfImportPartner,
+                'numOfExportPartner' => $numOfExportPartner,
             ]; 
             return $this->render('home', $params);
             }

@@ -10,7 +10,7 @@
         public string $quantity='';
         public string $merchant_id='';
         public string $partner_id='';
-        public function rules():array{ var_dump($this->getImportDate()); 
+        public function rules():array{  
             return [
                 'export_date' => [self::RULE_REQUIRED,[self::RULE_EXPORT,'import'=>$this->getImportDate()[0]["import_date"]]],
             ];

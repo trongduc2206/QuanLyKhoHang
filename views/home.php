@@ -52,7 +52,8 @@
   
 <hr class="solid">
   <?php echo "<h1>Total Number Of Your Partner: ".$numOfPartner."</h1>" ?>
-
+  <?php echo "<h2>Number Of Your Import Partner: ".$numOfImportPartner."</h2>" ?>
+  <?php echo "<h2>Number Of Your Export Partner: ".$numOfExportPartner."</h2>" ?>
 
 </div>
 <div class="clear"></div>
